@@ -20,7 +20,7 @@ function myCBFunction(jsonpData) {
             "identifier2": jsonpData.WIP2[i].Client_Batch,
             "identifier3": jsonpData.WIP2[i].Number_of_Samples
         });
-}}
+}};
 
 
 (function() {
