@@ -51,7 +51,7 @@ function myCBFunction(jsonpData) {
 "Discrepancy":jsonpData.Add_Shipment[i].Discrepancy,
 "Disposition":jsonpData.Add_Shipment[i].Disposition,
 "Expected":jsonpData.Add_Shipment[i].Expected,
-"Expected_Accession_Date":jsonpData.Add_Shipment[i].Expected_Accession_Date,
+"Expected_Accession_Date":jsonpData.Add_Shipment[i].Expected_Accession_Date/*,
 "File_upload":jsonpData.Add_Shipment[i].File_upload,
 "Hand_written_IDs":jsonpData.Add_Shipment[i].Hand_written_IDs,
 "High_Priority":jsonpData.Add_Shipment[i].High_Priority,
@@ -78,7 +78,7 @@ function myCBFunction(jsonpData) {
 "Service_Type":jsonpData.Add_Shipment[i].Service_Type,
 "Status_Reason":jsonpData.Add_Shipment[i].Status_Reason,
 "Status_of_Batch":jsonpData.Add_Shipment[i].Status_of_Batch,
-"Tracking":jsonpData.Add_Shipment[i].Tracking
+"Tracking":jsonpData.Add_Shipment[i].Tracking*/
         });
 }};
 
@@ -201,7 +201,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Expected_Accession_Date",
 		dataType: tableau.dataTypeEnum.datetime
-	}, {
+	}/*, {
 		id: "File_upload",
 		dataType: tableau.dataTypeEnum.string
 	}, {
@@ -279,7 +279,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Tracking",
 		dataType: tableau.dataTypeEnum.string
-    }];
+	}*/];
 
         var tableSchema = {
             id: "zohoFeed",
