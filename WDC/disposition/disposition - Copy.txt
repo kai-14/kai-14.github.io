@@ -13,61 +13,63 @@ function myCBFunction(jsonpData) {
 var returnedData = [];
 
 function myCBFunction(jsonpData) {
-    //Loop though the jsonpData object and push the elements onto the returnedData array.
     console.log(jsonpData);
-    for(var i = 0; i < jsonpData.WIP2.length; i++) {
+    //Loop though the jsonpData object and push the elements onto the returnedData array.
+    for(var i = 0; i < jsonpData.Add_Shipment.length; i++) {
         returnedData.push({
-            "ID_str": jsonpData.WIP2[i].ID_str,
-            "Client Batch": jsonpData.WIP2[i].Client_Batch,
-            "Number_of_Samples": jsonpData.WIP2[i].Number_of_Samples
-        });
+            "ID": jsonpData.Collector[i].ID_str,
+            "Client Batch": jsonpData.Collector[i].Client_Batch,
+            "Number_of_Samples": jsonpData.Collector[i].Number_of_Samples
 /*
-Batch_Name: "2019-05-29_GO29505_28233"
-Batch_Notes: "remove OCT and carve out tissue; Holding for more clarification on batch. HMM 30May2019"
-Client_Batch: "EA16113 - (2019-05-29_GO29505_28233)"
-Client_ID: "EA16113"
-Date_Accessioned: "29-May-2019"
-Date_Iso_Completed: ""
-Date_Iso_Started: ""
-Date_Off_Hold: ""
-Date_QC_Completed: ""
-Date_QC_Started: ""
-Downstream: ""
-Due_By: ""
-From_Iso: ""
-High_Priority: true
-ID: 3434202000004281300
-ID_str: "3434202000004281441"
-IsoCode: ""
-Iso_Comp_NA: false
-Iso_Notes: ""
-Iso_Start_NA: false
-Iso_Type_String: " - "
-Isolation_Type: ""
-Low_Conc: ""
-Low_DV200: ""
-Low_RINs: ""
-Low_Yields: ""
-MW_HM_KS_Notes: ""
-Methods: "[]"
-Multiple_Shipments: ""
-Number_of_Samples: 27
-On_Hold: true
-Overall_Expected_Completion_Date: ""
-PMs1: "[Allen Clayton]"
-Prep_Category: ""
-QC_Comp_NA: false
-QC_Notes: ""
-QC_Start_NA: false
-Sample_Request_Number_s: ""
-Sample_Type: "[]"
-Sample_Type_String: ""
-Status: "Iso+QC"
-Task_Type: ""
-Tissue_Info: ""
-Upcoming_Dates_for_this_Iso_Type: ""
+Batch: "2017-11-17_015805_25629"
+Batch_Complete: "20-Dec-2017"
+ClientID_BatchName: "EA17062_2017-11-17_015805_25629"
+Client_Expected_Ship_Date: ""
+Client_ID1: "EA17062"
+Client_Request: ""
+Client_Study_Project_ID: ""
+Comments: ""
+Completed_By1: "CJD"
+Courier: "FedEx"
+Days_Post_BC: ""
+Disposition: "Return"
+Disposition_Complete: "04-Jun-2019 13:54:58"
+Expected_vs_Confirmed: "Confirmed Ship Date"
+File_upload: false
+Final_Disposition: "Return"
+Gathered_By: "CJD"
+High_Priority: false
+ID: 3434202000004103000
+Initiated_By1: "CJD"
+Initiated_Date: "24-May-2019"
+Initiated_Ship_TAT: 11
+Manager_Approval_Notes: ""
+Multi_Batch_Disposition1: ""
+PM: ""
+PM_Comments: ""
+PM_List: "[Anthony Wrisbon]"
+Plates: ""
+Quote: "25629"
+Remaining_Samples: false
+Sample_Type: ""
+Samples: 54
+Samples_Pulled: "03-Jun-2019 14:11:52"
+Ship_Date: "04-Jun-2019"
+Shipment_Details: ""
+Single_Line: ""
+Single_Line1: ""
+Special_Return_other: ""
+Status: "Complete"
+Third_Party_Client: false
+Tubes: 48
+TubesAndPlates: 48
+Verified: "04-Jun-2019 11:25:22"
+Verifier1: "DK"
 */
 
+
+
+        });
 }};
 
 
@@ -132,12 +134,12 @@ Upcoming_Dates_for_this_Iso_Type: ""
 
     tableau.registerConnector(myConnector);*/
 var scriptTag = document.createElement('script');
-scriptTag.src = "https://creator.zoho.com/api/json/iso-qc-schedule/view/WIP_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
+scriptTag.src = "https://creator.zoho.com/api/json/disposition-log/view/Collector_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
 document.getElementsByTagName('head')[0].appendChild(scriptTag);
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "Zoho Creator Iso-QC Schedule App"; // This will be the data source name in Tableau
+            tableau.connectionName = "Zoho Creator Dispositions App"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
         });
     });

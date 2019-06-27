@@ -14,60 +14,90 @@ var returnedData = [];
 
 function myCBFunction(jsonpData) {
     //Loop though the jsonpData object and push the elements onto the returnedData array.
-    console.log(jsonpData);
-    for(var i = 0; i < jsonpData.WIP2.length; i++) {
+    for(var i = 0; i < jsonpData.Add_Shipment.length; i++) {
         returnedData.push({
-            "ID_str": jsonpData.WIP2[i].ID_str,
-            "Client Batch": jsonpData.WIP2[i].Client_Batch,
-            "Number_of_Samples": jsonpData.WIP2[i].Number_of_Samples
-        });
-/*
-Batch_Name: "2019-05-29_GO29505_28233"
-Batch_Notes: "remove OCT and carve out tissue; Holding for more clarification on batch. HMM 30May2019"
-Client_Batch: "EA16113 - (2019-05-29_GO29505_28233)"
-Client_ID: "EA16113"
-Date_Accessioned: "29-May-2019"
-Date_Iso_Completed: ""
-Date_Iso_Started: ""
-Date_Off_Hold: ""
-Date_QC_Completed: ""
-Date_QC_Started: ""
-Downstream: ""
-Due_By: ""
-From_Iso: ""
-High_Priority: true
-ID: 3434202000004281300
-ID_str: "3434202000004281441"
-IsoCode: ""
-Iso_Comp_NA: false
-Iso_Notes: ""
-Iso_Start_NA: false
-Iso_Type_String: " - "
+            "ID": jsonpData.Add_Shipment[i].ID_str,
+            "Client Batch": jsonpData.Add_Shipment[i].Client_Batch,
+            "Number_of_Samples": jsonpData.Add_Shipment[i].Number_of_Samples
+
+/*Accessioner: "CAR"
+Additional_Accessioner_search_1: ""
+Additional_Accessioner_search_2: ""
+Additional_Accessioner_search_3: ""
+Additional_Container_Type_1: ""
+Additional_PM_search_1: ""
+Additional_PM_search_2: ""
+Additional_PM_search_3: ""
+Additional_Received_By_search_1: ""
+Additional_Received_By_search_2: ""
+Additional_Received_By_search_3: ""
+Additional_Sales_search_1: ""
+Additional_Sales_search_2: ""
+Aliquot_Type: ""
+All_Accessioners: "CAR   "
+All_PM: "Hannah Redmond   "
+All_Received_By: "AM   "
+All_Sales: ""
+Arrival_Condition: "Frozen"
+Arrival_Email: "24-Apr-2018 00:00:00"
+Arrived_Set_Up: false
+Auto_Number: 5074
+Batch: "2018-04-23_25459_WES12_CA224-020"
+Batch_Accessioned: "24-Apr-2018 00:00:00"
+Batch_Ready: "24-Apr-2018 00:00:00"
+Batch_Set_Up: "23-Apr-2018 00:00:00"
+Batch_TAT: "expedited/Hold"
+Check: ""
+Client: "EA10130"
+Comments: "Waiting for Batch set up 11Apr2018 AM; batch is set up, awaiting BMS DTS client manifest for accessioning 13APR2018 CAR"
+Container_Type: "Screw Cap Tube"
+Container_field: "Screw Cap Tube "
+Courier: ""
+Data_Logger: ""
+Data_Logger_Received: false
+Days_Since_Arrival: 146.6
+Discrepancy: true
+Disposition: ""
+Expected: ""
+Expected_Accession_Date: ""
+File_upload: "http://creator.zoho.com/DownloadFile.do?filepath=/&sharedBy=653663544"
+Hand_written_IDs: false
+High_Priority: false
+ID: "3434202000001222644"
+ID_Mismatch: false
 Isolation_Type: ""
-Low_Conc: ""
-Low_DV200: ""
-Low_RINs: ""
-Low_Yields: ""
-MW_HM_KS_Notes: ""
-Methods: "[]"
-Multiple_Shipments: ""
-Number_of_Samples: 27
-On_Hold: true
-Overall_Expected_Completion_Date: ""
-PMs1: "[Allen Clayton]"
-Prep_Category: ""
-QC_Comp_NA: false
-QC_Notes: ""
-QC_Start_NA: false
-Sample_Request_Number_s: ""
-Sample_Type: "[]"
-Sample_Type_String: ""
-Status: "Iso+QC"
-Task_Type: ""
-Tissue_Info: ""
-Upcoming_Dates_for_this_Iso_Type: ""
+Last_Contact: "11-Apr-2018 00:00:00"
+Manifest_not_Provided: false
+Notes: ""
+Notified_Esoteric: false
+Number_of_Samples: 9
+Number_of_Slides: ""
+Other_Discrepancy: false
+PM_Form: "Hannah Redmond"
+Quote: "25459"
+Ready_Accessioned_TAT: 0
+Received_Accessioned_TAT: -13
+Received_By: "AM"
+Received_Date: "11-Apr-2018 00:00:00"
+Received_Ready_TAT: 13
+SSF_Not_Submitted: true
+Sales_Form: ""
+Sent_to_Iso: false
+Service_Type: ""
+Single_Line: ""
+Single_Line1: ""
+Status_Reason: ""
+Status_of_Batch: "Complete"
+Tracking: "536298611687"
+
 */
 
+
+
+
+
+
+        });
 }};
 
 
@@ -132,7 +162,7 @@ Upcoming_Dates_for_this_Iso_Type: ""
 
     tableau.registerConnector(myConnector);*/
 var scriptTag = document.createElement('script');
-scriptTag.src = "https://creator.zoho.com/api/json/iso-qc-schedule/view/WIP_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
+scriptTag.src = "https://creator.zoho.com/api/json/accessioning-log/view/Add_Shipment_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
 document.getElementsByTagName('head')[0].appendChild(scriptTag);
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
