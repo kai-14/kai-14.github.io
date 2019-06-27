@@ -153,8 +153,11 @@ function myCBFunction(jsonpData) {
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Arrived_Set_Up",
-		dataType: tableau.dataTypeEnum.string
-	}, {
+		dataType: tableau.dataTypeEnum.bool
+    }, {
+        id: "Auto_Number",
+        dataType: tableau.datatypeEnum.int
+    }, {
 		id: "Batch",
 		dataType: tableau.dataTypeEnum.string
 	}, {
@@ -162,10 +165,10 @@ function myCBFunction(jsonpData) {
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Batch_Ready",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.datetime
 	}, {
 		id: "Batch_Set_Up",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.datetime
 	}, {
 		id: "Batch_TAT",
 		dataType: tableau.dataTypeEnum.string
@@ -186,13 +189,13 @@ function myCBFunction(jsonpData) {
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Data_Logger_Received",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Days_Since_Arrival",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.float
 	}, {
 		id: "Discrepancy",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Disposition",
 		dataType: tableau.dataTypeEnum.string
@@ -201,22 +204,22 @@ function myCBFunction(jsonpData) {
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Expected_Accession_Date",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.datetime
 	}, {
 		id: "File_upload",
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Hand_written_IDs",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "High_Priority",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
-		id: "ID",
+		id: "ID_str",
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "ID_Mismatch",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Isolation_Type",
 		dataType: tableau.dataTypeEnum.string
@@ -225,22 +228,22 @@ function myCBFunction(jsonpData) {
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Manifest_not_Provided",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Notes",
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Notified_Esoteric",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Number_of_Samples",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.int
 	}, {
 		id: "Number_of_Slides",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.int
 	}, {
 		id: "Other_Discrepancy",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "PM_Form",
 		dataType: tableau.dataTypeEnum.string
@@ -249,28 +252,28 @@ function myCBFunction(jsonpData) {
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Ready_Accessioned_TAT",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.float
 	}, {
 		id: "Received_Accessioned_TAT",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.float
 	}, {
 		id: "Received_By",
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Received_Date",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.datetime
 	}, {
 		id: "Received_Ready_TAT",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.float
 	}, {
 		id: "SSF_Not_Submitted",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Sales_Form",
 		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "Sent_to_Iso",
-		dataType: tableau.dataTypeEnum.string
+		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Service_Type",
 		dataType: tableau.dataTypeEnum.string
