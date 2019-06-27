@@ -13,11 +13,11 @@ function myCBFunction(jsonpData) {
 var returnedData = [];
 
 function myCBFunction(jsonpData) {
-	console.log(jsonpData);
-    //Loop though the jsonpData object and push the elements onto the returnedData array.
+	//Loop though the jsonpData object and push the elements onto the returnedData array.
     for(var i = 0; i < jsonpData.Add_Shipment.length; i++) {
         returnedData.push({
-            "ID_str": jsonpData.Add_Shipment[i].ID_str,
+            "ID": jsonpData.Add_Shipment[i].ID_str,
+            "Client Batch": jsonpData.Add_Shipment[i].Client_Batch,
             "Number_of_Samples": jsonpData.Add_Shipment[i].Number_of_Samples,
 		"Accessioner": jsonpData.Add_Shipment[i].Accessioner,
 "Additional_Accessioner_search_1":jsonpData.Add_Shipment[i].Additional_Accessioner_search_1,
@@ -51,7 +51,7 @@ function myCBFunction(jsonpData) {
 "Discrepancy":jsonpData.Add_Shipment[i].Discrepancy,
 "Disposition":jsonpData.Add_Shipment[i].Disposition,
 "Expected":jsonpData.Add_Shipment[i].Expected,
-"Expected_Accession_Date":jsonpData.Add_Shipment[i].Expected_Accession_Date/*,
+"Expected_Accession_Date":jsonpData.Add_Shipment[i].Expected_Accession_Date,
 "File_upload":jsonpData.Add_Shipment[i].File_upload,
 "Hand_written_IDs":jsonpData.Add_Shipment[i].Hand_written_IDs,
 "High_Priority":jsonpData.Add_Shipment[i].High_Priority,
@@ -78,7 +78,7 @@ function myCBFunction(jsonpData) {
 "Service_Type":jsonpData.Add_Shipment[i].Service_Type,
 "Status_Reason":jsonpData.Add_Shipment[i].Status_Reason,
 "Status_of_Batch":jsonpData.Add_Shipment[i].Status_of_Batch,
-"Tracking":jsonpData.Add_Shipment[i].Tracking*/
+"Tracking":jsonpData.Add_Shipment[i].Tracking
         });
 }};
 
@@ -93,6 +93,10 @@ function myCBFunction(jsonpData) {
             id: "ID_str",
             dataType: tableau.dataTypeEnum.string
         }, {
+            id: "Client_Batch",
+            alias: "Client Batch",
+            dataType: tableau.dataTypeEnum.string
+        }, {
             id: "Number_of_Samples",
             alias: "Number of Samples",
             dataType: tableau.dataTypeEnum.float
@@ -100,7 +104,7 @@ function myCBFunction(jsonpData) {
 		id:"Accessioner",
 		alias: "Accessioner",
 		dataType: tableau.dataTypeEnum.string
-		}, {
+	}, {
 		id: "Additional_Accessioner_search_1",
 		dataType: tableau.dataTypeEnum.string
 
@@ -201,7 +205,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Expected_Accession_Date",
 		dataType: tableau.dataTypeEnum.datetime
-	}/*, {
+	}, {
 		id: "File_upload",
 		dataType: tableau.dataTypeEnum.string
 	}, {
@@ -210,6 +214,9 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "High_Priority",
 		dataType: tableau.dataTypeEnum.bool
+	}, {
+		id: "ID_str",
+		dataType: tableau.dataTypeEnum.string
 	}, {
 		id: "ID_Mismatch",
 		dataType: tableau.dataTypeEnum.bool
@@ -279,7 +286,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Tracking",
 		dataType: tableau.dataTypeEnum.string
-	}*/];
+    }];
 
         var tableSchema = {
             id: "zohoFeed",
