@@ -293,13 +293,10 @@ function myCBFunction(jsonpData) {
     };
 
     myConnector.getData = function(table, doneCallback) {
-
         table.appendRows(returnedData);
-   
-        doneCallback();
-   
+        
    };
-   
+   doneCallback();
    tableau.registerConnector(myConnector);
 
     /* Download the data
