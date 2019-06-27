@@ -43,7 +43,7 @@ function myCBFunction(jsonpData) {
 "Batch_Ready":jsonpData.Add_Shipment[i].Batch_Ready,
 "Batch_Set_Up":jsonpData.Add_Shipment[i].Batch_Set_Up,
 "Batch_TAT":jsonpData.Add_Shipment[i].Batch_TAT,
-"Check":jsonpData.Add_Shipment[i].Check/*,
+"Check":jsonpData.Add_Shipment[i].Check,
 "Client":jsonpData.Add_Shipment[i].Client,
 "Container_Type":jsonpData.Add_Shipment[i].Container_Type,
 "Courier":jsonpData.Add_Shipment[i].Courier,
@@ -57,9 +57,8 @@ function myCBFunction(jsonpData) {
 "File_upload":jsonpData.Add_Shipment[i].File_upload,
 "Hand_written_IDs":jsonpData.Add_Shipment[i].Hand_written_IDs,
 "High_Priority":jsonpData.Add_Shipment[i].High_Priority,
-"ID":jsonpData.Add_Shipment[i].ID,
 "ID_Mismatch":jsonpData.Add_Shipment[i].ID_Mismatch,
-"Isolation_Type":jsonpData.Add_Shipment[i].Isolation_Type,
+"Isolation_Type":jsonpData.Add_Shipment[i].Isolation_Type/*,
 "Last_Contact":jsonpData.Add_Shipment[i].Last_Contact,
 "Manifest_not_Provided":jsonpData.Add_Shipment[i].Manifest_not_Provided,
 "Notes":jsonpData.Add_Shipment[i].Notes,
@@ -177,7 +176,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Check",
 		dataType: tableau.dataTypeEnum.string
-	}/*, {
+	}, {
 		id: "Client",
 		dataType: tableau.dataTypeEnum.string
 	}, {
@@ -217,15 +216,12 @@ function myCBFunction(jsonpData) {
 		id: "High_Priority",
 		dataType: tableau.dataTypeEnum.bool
 	}, {
-		id: "ID_str",
-		dataType: tableau.dataTypeEnum.string
-	}, {
 		id: "ID_Mismatch",
 		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Isolation_Type",
 		dataType: tableau.dataTypeEnum.string
-	}, {
+	}/*, {
 		id: "Last_Contact",
 		dataType: tableau.dataTypeEnum.string
 	}, {
