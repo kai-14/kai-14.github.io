@@ -17,7 +17,6 @@ function myCBFunction(jsonpData) {
     for(var i = 0; i < jsonpData.Add_Shipment.length; i++) {
         returnedData.push({
             "ID": jsonpData.Add_Shipment[i].ID_str,
-            "Client Batch": jsonpData.Add_Shipment[i].Client_Batch,
             "Number_of_Samples": jsonpData.Add_Shipment[i].Number_of_Samples,
 		"Accessioner": jsonpData.Add_Shipment[i].Accessioner,
 "Additional_Accessioner_search_1":jsonpData.Add_Shipment[i].Additional_Accessioner_search_1,
@@ -91,10 +90,6 @@ function myCBFunction(jsonpData) {
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
             id: "ID_str",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "Client_Batch",
-            alias: "Client Batch",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "Number_of_Samples",
