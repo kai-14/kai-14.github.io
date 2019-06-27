@@ -63,8 +63,8 @@ function myCBFunction(jsonpData) {
 "Manifest_not_Provided":jsonpData.Add_Shipment[i].Manifest_not_Provided,
 "Notes":jsonpData.Add_Shipment[i].Notes,
 "Notified_Esoteric":jsonpData.Add_Shipment[i].Notified_Esoteric,
-"Number_of_Samples":jsonpData.Add_Shipment[i].Number_of_Samples/*,
-"Number_of_Slides":jsonpData.Add_Shipment[i].Number_of_Slides,
+"Number_of_Samples":jsonpData.Add_Shipment[i].Number_of_Samples,
+"Number_of_Slides":jsonpData.Add_Shipment[i].Number_of_Slides/*,
 "Other_Discrepancy":jsonpData.Add_Shipment[i].Other_Discrepancy,
 "PM_Form":jsonpData.Add_Shipment[i].PM_Form,
 "Quote":jsonpData.Add_Shipment[i].Quote,
@@ -230,16 +230,16 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Notes",
 		dataType: tableau.dataTypeEnum.string
-	},/* {
+	}, {
 		id: "Notified_Esoteric",
 		dataType: tableau.dataTypeEnum.bool
-	},*/ {
-		id: "Number_of_Samples",
-		dataType: tableau.dataTypeEnum.string
-	}/*, {
-		id: "Number_of_Slides",
-		dataType: tableau.dataTypeEnum.float
 	}, {
+		id: "Number_of_Samples",
+		dataType: tableau.dataTypeEnum.int
+	}, {
+		id: "Number_of_Slides",
+		dataType: tableau.dataTypeEnum.int
+	}/*, {
 		id: "Other_Discrepancy",
 		dataType: tableau.dataTypeEnum.bool
 	}, {
