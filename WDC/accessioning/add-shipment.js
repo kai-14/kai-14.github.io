@@ -92,10 +92,6 @@ function myCBFunction(jsonpData) {
             id: "ID_str",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "Number_of_Samples",
-            alias: "Number of Samples",
-            dataType: tableau.dataTypeEnum.float
-        }, {
 			id:"Accessioner",
 			alias: "Accessioner",
 			dataType: tableau.dataTypeEnum.string
