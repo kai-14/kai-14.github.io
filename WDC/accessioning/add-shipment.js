@@ -156,7 +156,7 @@ function myCBFunction(jsonpData) {
 		dataType: tableau.dataTypeEnum.bool
     }, {
         id: "Auto_Number",
-        dataType: tableau.datatypeEnum.int
+        dataType: tableau.dataTypeEnum.int
     }, {
 		id: "Batch",
 		dataType: tableau.dataTypeEnum.string
