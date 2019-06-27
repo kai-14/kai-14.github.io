@@ -61,11 +61,11 @@ function myCBFunction(jsonpData) {
 "Isolation_Type":jsonpData.Add_Shipment[i].Isolation_Type,
 "Last_Contact":jsonpData.Add_Shipment[i].Last_Contact,
 "Manifest_not_Provided":jsonpData.Add_Shipment[i].Manifest_not_Provided,
-"Notes":jsonpData.Add_Shipment[i].Notes,
+"Notes":jsonpData.Add_Shipment[i].Notes/*,
 "Notified_Esoteric":jsonpData.Add_Shipment[i].Notified_Esoteric,
 "Number_of_Samples":jsonpData.Add_Shipment[i].Number_of_Samples,
 "Number_of_Slides":jsonpData.Add_Shipment[i].Number_of_Slides,
-"Other_Discrepancy":jsonpData.Add_Shipment[i].Other_Discrepancy/*,
+"Other_Discrepancy":jsonpData.Add_Shipment[i].Other_Discrepancy,
 "PM_Form":jsonpData.Add_Shipment[i].PM_Form,
 "Quote":jsonpData.Add_Shipment[i].Quote,
 "Ready_Accessioned_TAT":jsonpData.Add_Shipment[i].Ready_Accessioned_TAT,
@@ -230,7 +230,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Notes",
 		dataType: tableau.dataTypeEnum.string
-	}, {
+	}/*, {
 		id: "Notified_Esoteric",
 		dataType: tableau.dataTypeEnum.bool
 	}, {
@@ -242,7 +242,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Other_Discrepancy",
 		dataType: tableau.dataTypeEnum.bool
-	}/*, {
+	}, {
 		id: "PM_Form",
 		dataType: tableau.dataTypeEnum.string
 	}, {
