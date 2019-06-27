@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 //var scriptTag = document.createElement('script');
 //scriptTag.src = "https://creator.zoho.com/api/json/iso-qc-schedule/view/WIP_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
 //document.getElementsByTagName('head')[0].appendChild(scriptTag);
@@ -342,4 +340,3 @@ document.getElementsByTagName('head')[0].appendChild(scriptTag);
         });
     });
 })();
->>>>>>> parent of b30530d... Update add-shipment.js
