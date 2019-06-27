@@ -230,10 +230,10 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Notes",
 		dataType: tableau.dataTypeEnum.string
-	}, {
+	},/* {
 		id: "Notified_Esoteric",
 		dataType: tableau.dataTypeEnum.bool
-	}, {
+	},*/ {
 		id: "Number_of_Samples",
 		dataType: tableau.dataTypeEnum.string
 	}/*, {
