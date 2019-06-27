@@ -13,10 +13,11 @@ function myCBFunction(jsonpData) {
 var returnedData = [];
 
 function myCBFunction(jsonpData) {
+	console.log(jsonpData.Add_Shipment[0].ID_str);
 	//Loop though the jsonpData object and push the elements onto the returnedData array.
     for(var i = 0; i < jsonpData.Add_Shipment.length; i++) {
         returnedData.push({
-            "ID": jsonpData.Add_Shipment[i].ID_str,
+            "ID_str": jsonpData.Add_Shipment[i].ID_str,
             "Client Batch": jsonpData.Add_Shipment[i].Client_Batch,
             "Number_of_Samples": jsonpData.Add_Shipment[i].Number_of_Samples,
 		"Accessioner": jsonpData.Add_Shipment[i].Accessioner,
@@ -31,7 +32,7 @@ function myCBFunction(jsonpData) {
 "Additional_Received_By_search_2":jsonpData.Add_Shipment[i].Additional_Received_By_search_2,
 "Additional_Received_By_search_3":jsonpData.Add_Shipment[i].Additional_Received_By_search_3,
 "Additional_Sales_search_1":jsonpData.Add_Shipment[i].Additional_Sales_search_1,
-"Additional_Sales_search_2":jsonpData.Add_Shipment[i].Additional_Sales_search_2,
+"Additional_Sales_search_2":jsonpData.Add_Shipment[i].Additional_Sales_search_2/*,
 "Aliquot_Type":jsonpData.Add_Shipment[i].Aliquot_Type,
 "Arrival_Condition":jsonpData.Add_Shipment[i].Arrival_Condition,
 "Arrival_Email":jsonpData.Add_Shipment[i].Arrival_Email,
@@ -79,7 +80,7 @@ function myCBFunction(jsonpData) {
 "Service_Type":jsonpData.Add_Shipment[i].Service_Type,
 "Status_Reason":jsonpData.Add_Shipment[i].Status_Reason,
 "Status_of_Batch":jsonpData.Add_Shipment[i].Status_of_Batch,
-"Tracking":jsonpData.Add_Shipment[i].Tracking
+"Tracking":jsonpData.Add_Shipment[i].Tracking*/
         });
 }};
 
@@ -143,7 +144,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Additional_Sales_search_2",
 		dataType: tableau.dataTypeEnum.string
-	}, {
+	}/*, {
 		id: "Aliquot_Type",
 		dataType: tableau.dataTypeEnum.string
 	}, {
@@ -287,7 +288,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Tracking",
 		dataType: tableau.dataTypeEnum.string
-    }];
+    }*/];
 
         var tableSchema = {
             id: "zohoFeed",
