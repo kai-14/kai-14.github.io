@@ -235,7 +235,7 @@ function myCBFunction(jsonpData) {
 		dataType: tableau.dataTypeEnum.bool
 	}, {
 		id: "Number_of_Samples",
-		dataType: tableau.dataTypeEnum.float
+		dataType: tableau.dataTypeEnum.string
 	}/*, {
 		id: "Number_of_Slides",
 		dataType: tableau.dataTypeEnum.float
