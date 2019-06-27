@@ -19,7 +19,7 @@ function myCBFunction(jsonpData) {
             "ID": jsonpData.Add_Shipment[i].ID_str,
             "Client Batch": jsonpData.Add_Shipment[i].Client_Batch,
             "Number_of_Samples": jsonpData.Add_Shipment[i].Number_of_Samples,
-		"Accessioner": jsonpData.Add_Shipment[i].Accessioner,
+		"Accessioner": jsonpData.Add_Shipment[i].Accessioner/*,
 "Additional_Accessioner_search_1":jsonpData.Add_Shipment[i].Additional_Accessioner_search_1,
 "Additional_Accessioner_search_2":jsonpData.Add_Shipment[i].Additional_Accessioner_search_2,
 "Additional_Accessioner_search_3":jsonpData.Add_Shipment[i].Additional_Accessioner_search_3,
@@ -78,7 +78,7 @@ function myCBFunction(jsonpData) {
 "Service_Type":jsonpData.Add_Shipment[i].Service_Type,
 "Status_Reason":jsonpData.Add_Shipment[i].Status_Reason,
 "Status_of_Batch":jsonpData.Add_Shipment[i].Status_of_Batch,
-"Tracking":jsonpData.Add_Shipment[i].Tracking
+"Tracking":jsonpData.Add_Shipment[i].Tracking*/
         });
 }};
 
@@ -104,7 +104,7 @@ function myCBFunction(jsonpData) {
 		id:"Accessioner",
 		alias: "Accessioner",
 		dataType: tableau.dataTypeEnum.string
-	}, {
+		}/*, {
 		id: "Additional_Accessioner_search_1",
 		dataType: tableau.dataTypeEnum.string
 
@@ -215,9 +215,6 @@ function myCBFunction(jsonpData) {
 		id: "High_Priority",
 		dataType: tableau.dataTypeEnum.bool
 	}, {
-		id: "ID_str",
-		dataType: tableau.dataTypeEnum.string
-	}, {
 		id: "ID_Mismatch",
 		dataType: tableau.dataTypeEnum.bool
 	}, {
@@ -286,7 +283,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Tracking",
 		dataType: tableau.dataTypeEnum.string
-    }];
+    }*/];
 
         var tableSchema = {
             id: "zohoFeed",
