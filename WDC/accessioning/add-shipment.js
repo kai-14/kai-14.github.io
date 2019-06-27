@@ -32,7 +32,7 @@ function myCBFunction(jsonpData) {
 "Additional_Received_By_search_2":jsonpData.Add_Shipment[i].Additional_Received_By_search_2,
 "Additional_Received_By_search_3":jsonpData.Add_Shipment[i].Additional_Received_By_search_3,
 "Additional_Sales_search_1":jsonpData.Add_Shipment[i].Additional_Sales_search_1,
-"Additional_Sales_search_2":jsonpData.Add_Shipment[i].Additional_Sales_search_2/*,
+"Additional_Sales_search_2":jsonpData.Add_Shipment[i].Additional_Sales_search_2,
 "Aliquot_Type":jsonpData.Add_Shipment[i].Aliquot_Type,
 "Arrival_Condition":jsonpData.Add_Shipment[i].Arrival_Condition,
 "Arrival_Email":jsonpData.Add_Shipment[i].Arrival_Email,
@@ -43,7 +43,7 @@ function myCBFunction(jsonpData) {
 "Batch_Ready":jsonpData.Add_Shipment[i].Batch_Ready,
 "Batch_Set_Up":jsonpData.Add_Shipment[i].Batch_Set_Up,
 "Batch_TAT":jsonpData.Add_Shipment[i].Batch_TAT,
-"Check":jsonpData.Add_Shipment[i].Check,
+"Check":jsonpData.Add_Shipment[i].Check/*,
 "Client":jsonpData.Add_Shipment[i].Client,
 "Container_Type":jsonpData.Add_Shipment[i].Container_Type,
 "Courier":jsonpData.Add_Shipment[i].Courier,
@@ -144,7 +144,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Additional_Sales_search_2",
 		dataType: tableau.dataTypeEnum.string
-	}/*, {
+	}, {
 		id: "Aliquot_Type",
 		dataType: tableau.dataTypeEnum.string
 	}, {
@@ -177,7 +177,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Check",
 		dataType: tableau.dataTypeEnum.string
-	}, {
+	}/*, {
 		id: "Client",
 		dataType: tableau.dataTypeEnum.string
 	}, {
