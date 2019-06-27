@@ -16,8 +16,8 @@ function myCBFunction(jsonpData) {
     //Loop though the jsonpData object and push the elements onto the returnedData array.
     for(var i = 0; i < jsonpData.Add_Shipment.length; i++) {
         returnedData.push({
-            "ID": jsonpData.Add_Shipment[i].ID_str,
-            "Client Batch": jsonpData.Add_Shipment[i].Client_Batch,
+            "ID_str": jsonpData.Add_Shipment[i].ID_str,
+            "Client_Batch": jsonpData.Add_Shipment[i].Client_Batch,
             "Number_of_Samples": jsonpData.Add_Shipment[i].Number_of_Samples,
 		"Accessioner": jsonpData.Add_Shipment[i].Accessioner/*,
 "Additional_Accessioner_search_1":jsonpData.Add_Shipment[i].Additional_Accessioner_search_1,
