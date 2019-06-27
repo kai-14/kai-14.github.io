@@ -36,6 +36,7 @@ function myCBFunction(jsonpData) {
 "Arrival_Condition":jsonpData.Add_Shipment[i].Arrival_Condition,
 "Arrival_Email":jsonpData.Add_Shipment[i].Arrival_Email,
 "Arrived_Set_Up":jsonpData.Add_Shipment[i].Arrived_Set_Up,
+"Auto_Number":jsonpData.Add_Shipment[i].Auto_Number,
 "Batch":jsonpData.Add_Shipment[i].Batch,
 "Batch_Accessioned":jsonpData.Add_Shipment[i].Batch_Accessioned,
 "Batch_Ready":jsonpData.Add_Shipment[i].Batch_Ready,
