@@ -58,7 +58,7 @@ function myCBFunction(jsonpData) {
 "Hand_written_IDs":jsonpData.Add_Shipment[i].Hand_written_IDs,
 "High_Priority":jsonpData.Add_Shipment[i].High_Priority,
 "ID_Mismatch":jsonpData.Add_Shipment[i].ID_Mismatch,
-"Isolation_Type":jsonpData.Add_Shipment[i].Isolation_Type/*,
+"Isolation_Type":jsonpData.Add_Shipment[i].Isolation_Type,
 "Last_Contact":jsonpData.Add_Shipment[i].Last_Contact,
 "Manifest_not_Provided":jsonpData.Add_Shipment[i].Manifest_not_Provided,
 "Notes":jsonpData.Add_Shipment[i].Notes,
@@ -79,7 +79,7 @@ function myCBFunction(jsonpData) {
 "Service_Type":jsonpData.Add_Shipment[i].Service_Type,
 "Status_Reason":jsonpData.Add_Shipment[i].Status_Reason,
 "Status_of_Batch":jsonpData.Add_Shipment[i].Status_of_Batch,
-"Tracking":jsonpData.Add_Shipment[i].Tracking*/
+"Tracking":jsonpData.Add_Shipment[i].Tracking
         });
 }};
 
@@ -221,7 +221,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Isolation_Type",
 		dataType: tableau.dataTypeEnum.string
-	}/*, {
+	}, {
 		id: "Last_Contact",
 		dataType: tableau.dataTypeEnum.string
 	}, {
@@ -284,7 +284,7 @@ function myCBFunction(jsonpData) {
 	}, {
 		id: "Tracking",
 		dataType: tableau.dataTypeEnum.string
-    }*/];
+    }];
 
         var tableSchema = {
             id: "zohoFeed",
