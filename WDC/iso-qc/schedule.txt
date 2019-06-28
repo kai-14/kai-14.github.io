@@ -13,64 +13,30 @@ function myCBFunction(jsonpData) {
 var returnedData = [];
 
 function myCBFunction(jsonpData) {
-    console.log(jsonpData);
     //Loop though the jsonpData object and push the elements onto the returnedData array.
-    for(var i = 0; i < jsonpData.Add_Shipment.length; i++) {
-        returnedData.push({
-            "ID": jsonpData.Collector[i].ID_str,
-            "Client Batch": jsonpData.Collector[i].Client_Batch,
-            "Number_of_Samples": jsonpData.Collector[i].Number_of_Samples
-/*
-Batch: "2017-11-17_015805_25629"
-Batch_Complete: "20-Dec-2017"
-ClientID_BatchName: "EA17062_2017-11-17_015805_25629"
-Client_Expected_Ship_Date: ""
-Client_ID1: "EA17062"
-Client_Request: ""
-Client_Study_Project_ID: ""
-Comments: ""
-Completed_By1: "CJD"
-Courier: "FedEx"
-Days_Post_BC: ""
-Disposition: "Return"
-Disposition_Complete: "04-Jun-2019 13:54:58"
-Expected_vs_Confirmed: "Confirmed Ship Date"
-File_upload: false
-Final_Disposition: "Return"
-Gathered_By: "CJD"
-High_Priority: false
-ID: 3434202000004103000
-Initiated_By1: "CJD"
-Initiated_Date: "24-May-2019"
-Initiated_Ship_TAT: 11
-Manager_Approval_Notes: ""
-Multi_Batch_Disposition1: ""
-PM: ""
-PM_Comments: ""
-PM_List: "[Anthony Wrisbon]"
-Plates: ""
-Quote: "25629"
-Remaining_Samples: false
-Sample_Type: ""
-Samples: 54
-Samples_Pulled: "03-Jun-2019 14:11:52"
-Ship_Date: "04-Jun-2019"
-Shipment_Details: ""
-Single_Line: ""
-Single_Line1: ""
-Special_Return_other: ""
-Status: "Complete"
-Third_Party_Client: false
-Tubes: 48
-TubesAndPlates: 48
-Verified: "04-Jun-2019 11:25:22"
-Verifier1: "DK"
+    console.log(jsonpData);
+//    for(var i = 0; i < jsonpData.Schedule.length; i++) {
+ //       returnedData.push({
+           /* "ID_str": jsonpData.Schedule[i].ID_str,
+}/*);
+"Calendar_Title":jsonpData.Schedule[i].Calendar_Title
+"Client_Batch":jsonpData.Schedule[i].Client_Batch
+"Date_field": jsonpData.Schedule[i].Date_field
+"Hood":jsonpData.Schedule[i].Hood
+"Hood_Location": jsonpData.Schedule[i].Hood_Location
+"ID":jsonpData.Schedule[i].ID
+"IsoCode": jsonpData.Schedule[i].IsoCode
+"Mark_for_Deletion":jsonpData.Schedule[i].Mark_for_Deletion
+"Note":jsonpData.Schedule[i].Note
+"Staff":jsonpData.Schedule[i].Staff
+"Staff_Email_String":jsonpData.Schedule[i].Staff_Email_String
+"Task_Type": jsonpData.Schedule[i].Task_Type
+"Thermomixers": jsonpData.Schedule[i].Thermomixers
+"Thermomixers_Formula":jsonpData.Schedule[i].Thermomixers_Formula
+"WIP1": jsonpData.Schedule[i].WIP1
 */
 
-
-
-        });
-}};
+//}};
 
 
 (function() {
@@ -90,6 +56,52 @@ Verifier1: "DK"
             id: "Number_of_Samples",
             alias: "Number of Samples",
             dataType: tableau.dataTypeEnum.float
+}, {
+id: "Calendar_Title",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Client_Batch",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Date_field",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Hood",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Hood_Location",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "ID",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "IsoCode",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Mark_for_Deletion",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Note",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Staff",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Staff_Email_String",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Task_Type",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Thermomixers",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "Thermomixers_Formula",
+dataType: tableau.dataTypeEnum.string
+}, {
+id: "WIP1",
+dataType: tableau.dataTypeEnum.string
+
         }];
 
         var tableSchema = {
@@ -134,14 +146,13 @@ Verifier1: "DK"
 
     tableau.registerConnector(myConnector);*/
 var scriptTag = document.createElement('script');
-scriptTag.src = "https://creator.zoho.com/api/json/disposition-log/view/Collector_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
+scriptTag.src = "https://creator.zoho.com/api/json/iso-qc-schedule/view/Schedule_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
 document.getElementsByTagName('head')[0].appendChild(scriptTag);
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "Zoho Creator Dispositions App"; // This will be the data source name in Tableau
+            tableau.connectionName = "Zoho Creator Iso-QC Schedule App"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
         });
     });
 })();
-

@@ -1,74 +1,54 @@
-//var scriptTag = document.createElement('script');
-//scriptTag.src = "https://creator.zoho.com/api/json/iso-qc-schedule/view/WIP_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
-//document.getElementsByTagName('head')[0].appendChild(scriptTag);
-/*
-function myCBFunction(jsonpData) {
-    for(var i = 0; i < jsonpData.WIP2.length; i++) {
-//        x = BigInt(jsonpData.WIP2[i].ID_str).toString(16);
-        console.log(jsonpData.WIP2[i].ID_str);
-//        console.log(x);
-    }
-}
-*/
 var returnedData = [];
 
 function myCBFunction(jsonpData) {
     console.log(jsonpData);
     //Loop though the jsonpData object and push the elements onto the returnedData array.
-    for(var i = 0; i < jsonpData.Add_Shipment.length; i++) {
+    for(var i = 0; i < jsonpData.Collector.length; i++) {
         returnedData.push({
-            "ID": jsonpData.Collector[i].ID_str,
-            "Client Batch": jsonpData.Collector[i].Client_Batch,
-            "Number_of_Samples": jsonpData.Collector[i].Number_of_Samples
-/*
-Batch: "2017-11-17_015805_25629"
-Batch_Complete: "20-Dec-2017"
-ClientID_BatchName: "EA17062_2017-11-17_015805_25629"
-Client_Expected_Ship_Date: ""
-Client_ID1: "EA17062"
-Client_Request: ""
-Client_Study_Project_ID: ""
-Comments: ""
-Completed_By1: "CJD"
-Courier: "FedEx"
-Days_Post_BC: ""
-Disposition: "Return"
-Disposition_Complete: "04-Jun-2019 13:54:58"
-Expected_vs_Confirmed: "Confirmed Ship Date"
-File_upload: false
-Final_Disposition: "Return"
-Gathered_By: "CJD"
-High_Priority: false
-ID: 3434202000004103000
-Initiated_By1: "CJD"
-Initiated_Date: "24-May-2019"
-Initiated_Ship_TAT: 11
-Manager_Approval_Notes: ""
-Multi_Batch_Disposition1: ""
-PM: ""
-PM_Comments: ""
-PM_List: "[Anthony Wrisbon]"
-Plates: ""
-Quote: "25629"
-Remaining_Samples: false
-Sample_Type: ""
-Samples: 54
-Samples_Pulled: "03-Jun-2019 14:11:52"
-Ship_Date: "04-Jun-2019"
-Shipment_Details: ""
-Single_Line: ""
-Single_Line1: ""
-Special_Return_other: ""
-Status: "Complete"
-Third_Party_Client: false
-Tubes: 48
-TubesAndPlates: 48
-Verified: "04-Jun-2019 11:25:22"
-Verifier1: "DK"
-*/
-
-
-
+			"Batch": jsonpData.Collector[i].Batch,
+			"Batch_Complete": jsonpData.Collector[i].Batch_Complete,
+			"ClientID_BatchName": jsonpData.Collector[i].ClientID_BatchName,
+			"Client_Expected_Ship_Date": jsonpData.Collector[i].Client_Expected_Ship_Date,
+			"Client_ID1": jsonpData.Collector[i].Client_ID1,
+			"Client_Request": jsonpData.Collector[i].Client_Request,
+			"Client_Study_Project_ID":  jsonpData.Collector[i].Client_Study_Project_ID,
+			"Comments": jsonpData.Collector[i].Comments,
+			"Completed_By1":  jsonpData.Collector[i].Completed_By1,
+			"Courier":  jsonpData.Collector[i].Courier,
+			"Days_Post_BC": jsonpData.Collector[i].Days_Post_BC,
+			"Disposition": jsonpData.Collector[i].Disposition,
+			"Disposition_Complete": jsonpData.Collector[i].Disposition_Complete,
+			"Expected_vs_Confirmed":  jsonpData.Collector[i].Expected_vs_Confirmed,
+			"File_upload":  jsonpData.Collector[i].File_upload,
+			"Final_Disposition": jsonpData.Collector[i].Final_Disposition,
+			"Gathered_By":  jsonpData.Collector[i].Gathered_By,
+			"High_Priority":  jsonpData.Collector[i].High_Priority,
+			"ID_str":  jsonpData.Collector[i].ID_str,
+			"Initiated_By1": jsonpData.Collector[i].Initiated_By1,
+			"Initiated_Date": jsonpData.Collector[i].Initiated_Date,
+			"Initiated_Ship_TAT": jsonpData.Collector[i].Initiated_Ship_TAT,
+			"Manager_Approval_Notes": jsonpData.Collector[i].Manager_Approval_Notes,
+			"Multi_Batch_Disposition1": jsonpData.Collector[i].Multi_Batch_Disposition1,
+			"PM": jsonpData.Collector[i].PM,
+			"PM_Comments": jsonpData.Collector[i].PM_Comments,
+			"PM_List": jsonpData.Collector[i].PM_List,
+			"Plates":  jsonpData.Collector[i].Plates,
+			"Quote":  jsonpData.Collector[i].Quote,
+			"Remaining_Samples": jsonpData.Collector[i].Remaining_Samples,
+			"Sample_Type":  jsonpData.Collector[i].Sample_Type,
+			"Samples":  jsonpData.Collector[i].Samples,
+			"Samples_Pulled":  jsonpData.Collector[i].Samples_Pulled,
+			"Ship_Date":  jsonpData.Collector[i].Ship_Date,
+			"Shipment_Details":  jsonpData.Collector[i].Shipment_Details,
+			"Single_Line": jsonpData.Collector[i].Single_Line,
+			"Single_Line1":  jsonpData.Collector[i].Single_Line1,
+			"Special_Return_other": jsonpData.Collector[i].Special_Return_other,
+			"Status":  jsonpData.Collector[i].Status,
+			"Third_Party_Client":  jsonpData.Collector[i].Third_Party_Client,
+			"Tubes": jsonpData.Collector[i].Tubes,
+			"TubesAndPlates":  jsonpData.Collector[i].TubesAndPlates,
+			"Verified":  jsonpData.Collector[i].Verified,
+			"Verifier1":  jsonpData.Collector[i].Verifier1
         });
 }};
 
@@ -80,21 +60,142 @@ Verifier1: "DK"
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
-            id: "ID_str",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "Client_Batch",
-            alias: "Client Batch",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "Number_of_Samples",
-            alias: "Number of Samples",
-            dataType: tableau.dataTypeEnum.float
-        }];
+            id:"Batch",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Batch_Complete",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"ClientID_BatchName",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Client_Expected_Ship_Date",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Client_ID1",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Client_Request",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Client_Study_Project_ID",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Comments",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Completed_By1",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Courier",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Days_Post_BC",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Disposition",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Disposition_Complete",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Expected_vs_Confirmed",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"File_upload",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Final_Disposition",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Gathered_By",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"High_Priority",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"ID_str",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Initiated_By1",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Initiated_Date",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Initiated_Ship_TAT",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Manager_Approval_Notes",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Multi_Batch_Disposition1",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"PM",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"PM_Comments",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"PM_List",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Plates",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Quote",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Remaining_Samples",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Sample_Type",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Samples",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Samples_Pulled",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Ship_Date",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Shipment_Details",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Single_Line",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Single_Line1",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Special_Return_other",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Status",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Third_Party_Client",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Tubes",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"TubesAndPlates",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Verified",
+			dataType: tableau.dataTypeEnum.string
+		}, {
+			id:"Verifier1",
+			dataType: tableau.dataTypeEnum.string
+		}];
 
         var tableSchema = {
             id: "zohoFeed",
-            alias: "Zoho Data from Iso-QC",
+            alias: "Zoho Data from Disposition Log",
             columns: cols
         };
 
@@ -102,37 +203,12 @@ Verifier1: "DK"
     };
 
     myConnector.getData = function(table, doneCallback) {
-
         table.appendRows(returnedData);
-   
         doneCallback();
-   
    };
    
    tableau.registerConnector(myConnector);
 
-    /* Download the data
-    myConnector.getData = function(table, doneCallback) {
-        $.getJSON("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function(resp) {
-            var feat = resp.features,
-                tableData = [];
-
-            // Iterate over the JSON object
-            for (var i = 0, len = feat.length; i < len; i++) {
-                tableData.push({
-                    "id": feat[i].id,
-                    "mag": feat[i].properties.mag,
-                    "title": feat[i].properties.title,
-                    "location": feat[i].geometry
-                });
-            }
-
-            table.appendRows(tableData);
-            doneCallback();
-        });
-    };
-
-    tableau.registerConnector(myConnector);*/
 var scriptTag = document.createElement('script');
 scriptTag.src = "https://creator.zoho.com/api/json/disposition-log/view/Collector_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
 document.getElementsByTagName('head')[0].appendChild(scriptTag);
@@ -144,4 +220,3 @@ document.getElementsByTagName('head')[0].appendChild(scriptTag);
         });
     });
 })();
-
