@@ -34,14 +34,6 @@ function myCBFunction(jsonpData) {
             id: "ID_str",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "Client_Batch",
-            alias: "Client Batch",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "Number_of_Samples",
-            alias: "Number of Samples",
-            dataType: tableau.dataTypeEnum.float
-        }, {
             id: "Calendar_Title",
             dataType: tableau.dataTypeEnum.string
         }, {
@@ -55,9 +47,6 @@ function myCBFunction(jsonpData) {
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "Hood_Location",
-            dataType: tableau.dataTypeEnum.string
-        }, {
-            id: "ID",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "IsoCode",
@@ -82,6 +71,9 @@ function myCBFunction(jsonpData) {
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "Thermomixers_Formula",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "WIP_ID_str",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "WIP1",
