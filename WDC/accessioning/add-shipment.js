@@ -283,7 +283,7 @@ document.getElementsByTagName('head')[0].appendChild(scriptTag);
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "Zoho Creator Iso-QC Schedule App"; // This will be the data source name in Tableau
+            tableau.connectionName = "Zoho Accessioning Log"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
         });
     });

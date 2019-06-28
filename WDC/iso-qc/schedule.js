@@ -6,24 +6,23 @@ function myCBFunction(jsonpData) {
     for(var i = 0; i < jsonpData.Schedule.length; i++) {
        returnedData.push({
             "ID_str": jsonpData.Schedule[i].ID_str,
-});
-"Calendar_Title":jsonpData.Schedule[i].Calendar_Title
-"Client_Batch":jsonpData.Schedule[i].Client_Batch
-"Date_field": jsonpData.Schedule[i].Date_field
-"Hood":jsonpData.Schedule[i].Hood
-"Hood_Location": jsonpData.Schedule[i].Hood_Location
-"ID":jsonpData.Schedule[i].ID
-"IsoCode": jsonpData.Schedule[i].IsoCode
-"Mark_for_Deletion":jsonpData.Schedule[i].Mark_for_Deletion
-"Note":jsonpData.Schedule[i].Note
-"Staff":jsonpData.Schedule[i].Staff
-"Staff_Email_String":jsonpData.Schedule[i].Staff_Email_String
-"Task_Type": jsonpData.Schedule[i].Task_Type
-"Thermomixers": jsonpData.Schedule[i].Thermomixers
-"Thermomixers_Formula":jsonpData.Schedule[i].Thermomixers_Formula
-"WIP1": jsonpData.Schedule[i].WIP1
-}};
-
+            "Calendar_Title":jsonpData.Schedule[i].Calendar_Title,
+            "Client_Batch":jsonpData.Schedule[i].Client_Batch,
+            "Date_field": jsonpData.Schedule[i].Date_field,
+            "Hood":jsonpData.Schedule[i].Hood,
+            "Hood_Location": jsonpData.Schedule[i].Hood_Location,
+            "ID":jsonpData.Schedule[i].ID,
+            "IsoCode": jsonpData.Schedule[i].IsoCode,
+            "Mark_for_Deletion":jsonpData.Schedule[i].Mark_for_Deletion,
+            "Note":jsonpData.Schedule[i].Note,
+            "Staff":jsonpData.Schedule[i].Staff,
+            "Staff_Email_String":jsonpData.Schedule[i].Staff_Email_String,
+            "Task_Type": jsonpData.Schedule[i].Task_Type,
+            "Thermomixers": jsonpData.Schedule[i].Thermomixers,
+            "Thermomixers_Formula":jsonpData.Schedule[i].Thermomixers_Formula,
+            "WIP1": jsonpData.Schedule[i].WIP1
+        });
+    }};
 
 (function() {
     // Create the connector object
@@ -111,7 +110,7 @@ document.getElementsByTagName('head')[0].appendChild(scriptTag);
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "Zoho Creator Iso-QC Schedule App"; // This will be the data source name in Tableau
+            tableau.connectionName = "Zoho Creator Iso-QC Schedule Subform Data"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
         });
     });

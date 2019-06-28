@@ -5,11 +5,11 @@ function myCBFunction(jsonpData) {
     for(var i = 0; i < jsonpData.QC_Details.length; i++) {
         returnedData.push({
             "ID_str": jsonpData.QC_Details[i].ID_str,
-            "Batch_Database_ID":jsonpData.QC_Details[i].Batch_Database_ID
-            "Equipment": jsonpData.QC_Details[i].Equipment
-            "ID": jsonpData.QC_Details[i].ID
-            "Note": jsonpData.QC_Details[i].Note
-            "QC_Date": jsonpData.QC_Details[i].QC_Date
+            "Batch_Database_ID":jsonpData.QC_Details[i].Batch_Database_ID,
+            "Equipment": jsonpData.QC_Details[i].Equipment,
+            "ID": jsonpData.QC_Details[i].ID,
+            "Note": jsonpData.QC_Details[i].Note,
+            "QC_Date": jsonpData.QC_Details[i].QC_Date,
             "Qty_Samples": jsonpData.QC_Details[i].Qty_Samples
         });
 }};
@@ -75,7 +75,7 @@ document.getElementsByTagName('head')[0].appendChild(scriptTag);
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "Zoho Creator Iso-QC Schedule App"; // This will be the data source name in Tableau
+            tableau.connectionName = "Zoho Creator QC Subform Data"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
         });
     });
