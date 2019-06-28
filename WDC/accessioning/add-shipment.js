@@ -278,7 +278,7 @@ function myCBFunction(jsonpData) {
    tableau.registerConnector(myConnector);
 
 var scriptTag = document.createElement('script');
-scriptTag.src = "https://creator.zoho.com/api/json/accessioning-log/view/Add_Shipment_Extract?authtoken=fa31ac8ec098f8276c445d5ffdafdf4a&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
+scriptTag.src = "https://creator.zoho.com/api/json/accessioning-log/view/Add_Shipment_Extract?authtoken="+window.location.search.substr(1)+"&scope=creatorapi&zc_ownername=q2labsolutions&callback=myCBFunction";
 document.getElementsByTagName('head')[0].appendChild(scriptTag);
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
