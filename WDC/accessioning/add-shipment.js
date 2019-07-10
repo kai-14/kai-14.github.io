@@ -139,7 +139,7 @@ function myCBFunction(jsonpData) {
 			dataType: tableau.dataTypeEnum.string
 		}, {
 			id: "Batch_Accessioned",
-			dataType: tableau.dataTypeEnum.string
+			dataType: tableau.dataTypeEnum.datetime
 		}, {
 			id: "Batch_Ready",
 			dataType: tableau.dataTypeEnum.datetime
