@@ -54,17 +54,17 @@ function myCBFunction(jsonpData) {
             id: "Additional_Reviewers_Beyond_Those_Required",
             dataType: tableau.dataTypeEnum.string
         }, {
-                id: "Complete_Status_Date", dataType: tableau.dataTypeEnum.string
+                id: "Complete_Status_Date", dataType: tableau.dataTypeEnum.date
             }, {
                 id: "DCRs_to_Address", dataType: tableau.dataTypeEnum.string
             },{
-                id: "Date_Ticket_Completed", dataType: tableau.dataTypeEnum.string
+                id: "Date_Ticket_Completed", dataType: tableau.dataTypeEnum.date
             },{
-                id: "Date_Ticket_Submitted", dataType: tableau.dataTypeEnum.string
+                id: "Date_Ticket_Submitted", dataType: tableau.dataTypeEnum.date
             },{
-                id: "Date_of_Project_Status_Change", dataType: tableau.dataTypeEnum.string
+                id: "Date_of_Project_Status_Change", dataType: tableau.dataTypeEnum.date
             },{
-                id: "Document_Effective_Date", dataType: tableau.dataTypeEnum.string
+                id: "Document_Effective_Date", dataType: tableau.dataTypeEnum.date
             },{
                 id: "Document_ID", dataType: tableau.dataTypeEnum.string
             },{
@@ -72,41 +72,39 @@ function myCBFunction(jsonpData) {
             },{
                 id: "Functional_Area_Manager", dataType: tableau.dataTypeEnum.string
             },{
-                id: "Have_DCRs_Been_Addressed", dataType: tableau.dataTypeEnum.string
+                id: "Have_DCRs_Been_Addressed", dataType: tableau.dataTypeEnum.bool
             },{
-                id: "Have_reviewer_comments_been_addressed", dataType: tableau.dataTypeEnum.string
+                id: "Have_reviewer_comments_been_addressed", dataType: tableau.dataTypeEnum.bool
             },{
-                id: "High_Priority", dataType: tableau.dataTypeEnum.string
-            },{
-                id: "ID", dataType: tableau.dataTypeEnum.string
+                id: "High_Priority", dataType: tableau.dataTypeEnum.bool
             },{
                 id: "Medical_Writer_Assigned", dataType: tableau.dataTypeEnum.string
             },{
                 id: "Name", dataType: tableau.dataTypeEnum.string
             },{
-                id: "OverallTAT", dataType: tableau.dataTypeEnum.string
+                id: "OverallTAT", dataType: tableau.dataTypeEnum.float
             },{
-                id: "PendingCompleteTAT", dataType: tableau.dataTypeEnum.string
+                id: "PendingCompleteTAT", dataType: tableau.dataTypeEnum.float
             },{
-                id: "Pending_Status_Date", dataType: tableau.dataTypeEnum.string
+                id: "Pending_Status_Date", dataType: tableau.dataTypeEnum.date
             },{
-                id: "Project_Anticipated_Completion_Date", dataType: tableau.dataTypeEnum.string
+                id: "Project_Anticipated_Completion_Date", dataType: tableau.dataTypeEnum.date
             },{
                 id: "Project_Category", dataType: tableau.dataTypeEnum.string
             },{
                 id: "Project_Status", dataType: tableau.dataTypeEnum.string
             },{
-                id: "Rejected_Status_Date", dataType: tableau.dataTypeEnum.string
+                id: "Rejected_Status_Date", dataType: tableau.dataTypeEnum.date
             },{
-                id: "Requested_Due_Date", dataType: tableau.dataTypeEnum.string
+                id: "Requested_Due_Date", dataType: tableau.dataTypeEnum.date
             },{
                 id: "Required_Changes", dataType: tableau.dataTypeEnum.string
             },{
-                id: "SubmitPendingTAT", dataType: tableau.dataTypeEnum.string
+                id: "SubmitPendingTAT", dataType: tableau.dataTypeEnum.float
             },{
-                id: "Submit_Date", dataType: tableau.dataTypeEnum.string
+                id: "Submit_Date", dataType: tableau.dataTypeEnum.date
             },{
-                id: "Ticket_Number", dataType: tableau.dataTypeEnum.string
+                id: "Ticket_Number", dataType: tableau.dataTypeEnum.int
             },{
                 id: "Writer_Comments", dataType: tableau.dataTypeEnum.string
             },{
