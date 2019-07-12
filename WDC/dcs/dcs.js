@@ -47,40 +47,73 @@ function myCBFunction(jsonpData) {
 
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
-        var cols = [
-            {id: "Additional_Information", dataType: tableau.dataTypeEnum.string},
-            {id: "Additional_Reviewers_Beyond_Those_Required", dataType: tableau.dataTypeEnum.string},
-            {id: "Complete_Status_Date", dataType: tableau.dataTypeEnum.string},
-            {id: "DCRs_to_Address", dataType: tableau.dataTypeEnum.string},
-            {id: "Date_Ticket_Completed", dataType: tableau.dataTypeEnum.string},
-            {id: "Date_Ticket_Submitted", dataType: tableau.dataTypeEnum.string},
-            {id: "Date_of_Project_Status_Change", dataType: tableau.dataTypeEnum.string},
-            {id: "Document_Effective_Date", dataType: tableau.dataTypeEnum.string},
-            {id: "Document_ID", dataType: tableau.dataTypeEnum.string},
-            {id: "Email", dataType: tableau.dataTypeEnum.string},
-            {id: "Functional_Area_Manager", dataType: tableau.dataTypeEnum.string},
-            {id: "Have_DCRs_Been_Addressed", dataType: tableau.dataTypeEnum.string},
-            {id: "Have_reviewer_comments_been_addressed", dataType: tableau.dataTypeEnum.string},
-            {id: "High_Priority", dataType: tableau.dataTypeEnum.string},
-            {id: "ID", dataType: tableau.dataTypeEnum.string},
-            {id: "Medical_Writer_Assigned", dataType: tableau.dataTypeEnum.string},
-            {id: "Name", dataType: tableau.dataTypeEnum.string},
-            {id: "OverallTAT", dataType: tableau.dataTypeEnum.string},
-            {id: "PendingCompleteTAT", dataType: tableau.dataTypeEnum.string},
-            {id: "Pending_Status_Date", dataType: tableau.dataTypeEnum.string},
-            {id: "Project_Anticipated_Completion_Date", dataType: tableau.dataTypeEnum.string},
-            {id: "Project_Category", dataType: tableau.dataTypeEnum.string},
-            {id: "Project_Status", dataType: tableau.dataTypeEnum.string},
-            {id: "Rejected_Status_Date", dataType: tableau.dataTypeEnum.string},
-            {id: "Requested_Due_Date", dataType: tableau.dataTypeEnum.string},
-            {id: "Required_Changes", dataType: tableau.dataTypeEnum.string},
-            {id: "SubmitPendingTAT", dataType: tableau.dataTypeEnum.string},
-            {id: "Submit_Date", dataType: tableau.dataTypeEnum.string},
-            {id: "Ticket_Number", dataType: tableau.dataTypeEnum.string},
-            {id: "Writer_Comments", dataType: tableau.dataTypeEnum.string},
-            {id: "Your_QID", dataType: tableau.dataTypeEnum.string},
-            {id: "eSOP_Link", dataType: tableau.dataTypeEnum.string}
-        ];
+        var cols = [{
+            id: "Additional_Information",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "Additional_Reviewers_Beyond_Those_Required",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+                id: "Complete_Status_Date", dataType: tableau.dataTypeEnum.string
+            }, {
+                id: "DCRs_to_Address", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Date_Ticket_Completed", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Date_Ticket_Submitted", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Date_of_Project_Status_Change", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Document_Effective_Date", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Document_ID", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Email", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Functional_Area_Manager", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Have_DCRs_Been_Addressed", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Have_reviewer_comments_been_addressed", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "High_Priority", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "ID", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Medical_Writer_Assigned", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Name", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "OverallTAT", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "PendingCompleteTAT", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Pending_Status_Date", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Project_Anticipated_Completion_Date", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Project_Category", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Project_Status", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Rejected_Status_Date", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Requested_Due_Date", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Required_Changes", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "SubmitPendingTAT", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Submit_Date", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Ticket_Number", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Writer_Comments", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "Your_QID", dataType: tableau.dataTypeEnum.string
+            },{
+                id: "eSOP_Link", dataType: tableau.dataTypeEnum.string
+            }];
 
         var tableSchema = {
             id: "zohoFeed",
