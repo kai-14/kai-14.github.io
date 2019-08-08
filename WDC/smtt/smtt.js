@@ -33,9 +33,6 @@ function myCBFunction(jsonpData) {
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
-            id: "ID_str",
-            dataType: tableau.dataTypeEnum.string
-        }, {
 			id:"Additional_Comments",
 			dataType: tableau.dataTypeEnum.string
 		}, {
