@@ -34,7 +34,8 @@ LOGOS = [("none", "None"), ("anthropic", "Anthropic"), ("claude", "Claude")]
 
 DIAL = ("dial", 0)
 ACCENT = ("accent", 0)
-CASE = "#FF0C0D0E"          # chapter ring and teeth
+CASE = "#FF0C0D0E"          # chapter ring
+TOOTH_FILL = "#A30A0B0C"     # teeth: translucent dark metal, so the brushing and sheen show through
 NUMERAL = "#FFE4E6E8"
 LUME = "#FFCFD6C8"
 TICK = "#FFD3CFBC"           # pale cream ticks, two between each pair of hours
@@ -106,8 +107,8 @@ def sheen(bright, dark, phase, n=24, power=1.0):
     return cols, pos
 
 
-DIAL_SHEEN = sheen(0.30, 0.22, 315)
-RING_SHEEN = sheen(0.20, 0.0, 300, power=2.0)
+DIAL_SHEEN = sheen(0.22, 0.16, 315)
+RING_SHEEN = sheen(0.15, 0.0, 300, power=2.0)
 
 
 def tooth_bevel(deg):
@@ -137,7 +138,7 @@ def teeth():
     out = []
     r0, r1, tw = TOOTH
     for h in range(12):
-        out.append([("rrect", dict(r=(r0 + r1) / 2, h=r1 - r0, w=tw, rad=11, deg=h * 30, fill=CASE, stroke=None, sw=0)),
+        out.append([("rrect", dict(r=(r0 + r1) / 2, h=r1 - r0, w=tw, rad=11, deg=h * 30, fill=TOOTH_FILL, stroke=None, sw=0)),
                     ("rrect", dict(r=R_LUME, h=9, w=21, rad=2, deg=h * 30, fill=LUME, stroke=None, sw=0))]
                    + tooth_bevel(h * 30))
     return out
@@ -286,9 +287,9 @@ def wff_sheens(ind, tilt):
     out = []
     for name, shape, k in (
             ("dialSheen", f'<Ellipse x="{f(C - d)}" y="{f(C - d)}" width="{2 * d}" height="{2 * d}">'
-                          f'<Fill color="#FFFFFFFF">{sweep(DIAL_SHEEN)}</Fill></Ellipse>', (0.6, 0.4)),
+                          f'<Fill color="#FFFFFFFF">{sweep(DIAL_SHEEN)}</Fill></Ellipse>', (1.4, 1.0)),
             ("ringSheen", f'<Ellipse x="{f(C - rm)}" y="{f(C - rm)}" width="{f(2 * rm)}" height="{f(2 * rm)}">'
-                          f'<Stroke color="#FFFFFFFF" thickness="{f(rw)}">{sweep(RING_SHEEN)}</Stroke></Ellipse>', (-0.4, -0.3))):
+                          f'<Stroke color="#FFFFFFFF" thickness="{f(rw)}">{sweep(RING_SHEEN)}</Stroke></Ellipse>', (-0.9, -0.7))):
         out.append(f'{ind}<PartDraw name="{name}" x="0" y="0" width="{W}" height="{W}" pivotX="0.5" pivotY="0.5">')
         if tilt:
             out.append(f'{ind}  <Gyro angle="{TILT.format(a=k[0], b=k[1])}"/>')
@@ -437,9 +438,9 @@ def svg_items(items, pick, extra=""):
                 x, y, rot = C - p["w"] / 2, C - p["r"] - p["h"] / 2, f' transform="rotate({p["deg"]} {C} {C})"'
             else:
                 x, y, rot = p["x"], p["y"], ""
-            fc, _ = scol(p["fill"], pick)
+            fc, fop = scol(p["fill"], pick)
             st = f' stroke="{scol(p["stroke"], pick)[0]}" stroke-width="{f(p["sw"])}"' if p["stroke"] else ""
-            o.append(f'<rect x="{f(x)}" y="{f(y)}" width="{f(p["w"])}" height="{f(p["h"])}" rx="{f(p["rad"])}" fill="{fc}"{st}{rot}/>')
+            o.append(f'<rect x="{f(x)}" y="{f(y)}" width="{f(p["w"])}" height="{f(p["h"])}" rx="{f(p["rad"])}" fill="{fc}" fill-opacity="{fop}"{st}{rot}/>')
         elif kind == "text":
             col, op = scol(p["color"], pick)
             wt = "normal" if p.get("weight") == "NORMAL" else "bold"

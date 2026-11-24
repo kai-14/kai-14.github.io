@@ -37,7 +37,7 @@
           </PartDraw>
           <PartDraw name="dialGlow" x="0" y="0" width="450" height="450">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <Ellipse x="0" y="0" width="450" height="450"><Fill color="#FFFFFFFF"><RadialGradient centerX="185" centerY="165" radius="320" colors="#8CFFFFFF #1FFFFFFF #00000000 #7A000000" positions="0 0.35 0.6 1"/></Fill></Ellipse>
+            <Ellipse x="0" y="0" width="450" height="450"><Fill color="#FFFFFFFF"><RadialGradient centerX="190" centerY="170" radius="420" colors="#80FFFFFF #59FFFFFF #2EFFFFFF #0DFFFFFF #00000000 #47000000 #47000000" positions="0 0.12 0.25 0.38 0.5 0.69 1"/></Fill></Ellipse>
           </PartDraw>
           <PartDraw name="rings" x="0" y="0" width="450" height="450">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
@@ -149,7 +149,7 @@
               </PartDraw>
               <PartDraw name="subdialDiscGlow" x="30" y="30" width="140" height="140">
                 <Variant mode="AMBIENT" target="alpha" value="0"/>
-                <Ellipse x="0" y="0" width="140" height="140"><Fill color="#FFFFFFFF"><RadialGradient centerX="45" centerY="40" radius="140" colors="#5CFFFFFF #00FFFFFF #36000000" positions="0 0.55 1"/></Fill></Ellipse>
+                <Ellipse x="0" y="0" width="140" height="140"><Fill color="#FFFFFFFF"><RadialGradient centerX="45" centerY="40" radius="170" colors="#5CFFFFFF #33FFFFFF #0FFFFFFF #00000000 #33000000 #33000000" positions="0 0.15 0.35 0.5 0.75 1"/></Fill></Ellipse>
                 <Ellipse x="0" y="0" width="140" height="140"><Stroke color="#40FFFFFF" thickness="1.2"/></Ellipse>
               </PartDraw>
               <Group name="subdialMarks" x="0" y="0" width="200" height="200">
@@ -244,7 +244,7 @@
           </PartDraw>
           <PartDraw name="dialGlow" x="0" y="0" width="450" height="450">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <Ellipse x="0" y="0" width="450" height="450"><Fill color="#FFFFFFFF"><RadialGradient centerX="185" centerY="165" radius="320" colors="#40FFFFFF #0FFFFFFF #00000000 #A6000000" positions="0 0.35 0.6 1"/></Fill></Ellipse>
+            <Ellipse x="0" y="0" width="450" height="450"><Fill color="#FFFFFFFF"><RadialGradient centerX="190" centerY="170" radius="420" colors="#40FFFFFF #2EFFFFFF #17FFFFFF #05FFFFFF #00000000 #66000000 #66000000" positions="0 0.12 0.25 0.38 0.5 0.69 1"/></Fill></Ellipse>
           </PartDraw>
           <PartDraw name="rings" x="0" y="0" width="450" height="450">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
@@ -360,7 +360,7 @@
               </PartDraw>
               <PartDraw name="subdialDiscGlow" x="30" y="30" width="140" height="140">
                 <Variant mode="AMBIENT" target="alpha" value="0"/>
-                <Ellipse x="0" y="0" width="140" height="140"><Fill color="#FFFFFFFF"><RadialGradient centerX="45" centerY="40" radius="140" colors="#36FFFFFF #00FFFFFF #47000000" positions="0 0.55 1"/></Fill></Ellipse>
+                <Ellipse x="0" y="0" width="140" height="140"><Fill color="#FFFFFFFF"><RadialGradient centerX="45" centerY="40" radius="170" colors="#38FFFFFF #1FFFFFFF #0AFFFFFF #00000000 #40000000 #40000000" positions="0 0.15 0.35 0.5 0.75 1"/></Fill></Ellipse>
                 <Ellipse x="0" y="0" width="140" height="140"><Stroke color="#2EFFFFFF" thickness="1.2"/></Ellipse>
               </PartDraw>
               <Group name="subdialMarks" x="0" y="0" width="200" height="200">

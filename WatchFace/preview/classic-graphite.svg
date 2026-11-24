@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" width="450" height="450">
 <defs>
-<radialGradient id="g-classic-graphite" gradientUnits="userSpaceOnUse" cx="185" cy="165" r="320"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.549"/><stop offset="0.35" stop-color="#FFFFFF" stop-opacity="0.122"/><stop offset="0.6" stop-color="#000000" stop-opacity="0.000"/><stop offset="1" stop-color="#000000" stop-opacity="0.478"/></radialGradient>
-<radialGradient id="s-classic-graphite" gradientUnits="userSpaceOnUse" cx="75" cy="70" r="140"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.361"/><stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0.000"/><stop offset="1" stop-color="#000000" stop-opacity="0.212"/></radialGradient>
+<radialGradient id="g-classic-graphite" gradientUnits="userSpaceOnUse" cx="190" cy="170" r="420"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.502"/><stop offset="0.12" stop-color="#FFFFFF" stop-opacity="0.349"/><stop offset="0.25" stop-color="#FFFFFF" stop-opacity="0.180"/><stop offset="0.38" stop-color="#FFFFFF" stop-opacity="0.051"/><stop offset="0.5" stop-color="#000000" stop-opacity="0.000"/><stop offset="0.69" stop-color="#000000" stop-opacity="0.278"/><stop offset="1" stop-color="#000000" stop-opacity="0.278"/></radialGradient>
+<radialGradient id="s-classic-graphite" gradientUnits="userSpaceOnUse" cx="75" cy="70" r="170"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.361"/><stop offset="0.15" stop-color="#FFFFFF" stop-opacity="0.200"/><stop offset="0.35" stop-color="#FFFFFF" stop-opacity="0.059"/><stop offset="0.5" stop-color="#000000" stop-opacity="0.000"/><stop offset="0.75" stop-color="#000000" stop-opacity="0.200"/><stop offset="1" stop-color="#000000" stop-opacity="0.200"/></radialGradient>
 <clipPath id="c-classic-graphite"><circle cx="225.0" cy="225.0" r="225.0"/></clipPath>
 </defs>
 <g clip-path="url(#c-classic-graphite)"><rect width="450" height="450" fill="#000"/>

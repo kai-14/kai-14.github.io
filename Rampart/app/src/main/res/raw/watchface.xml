@@ -42,12 +42,12 @@
         <Group name="sheenTrue" x="0" y="0" width="450" height="450">
           <Variant mode="AMBIENT" target="alpha" value="0"/>
           <PartDraw name="dialSheen" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
-            <Gyro angle="clamp([ACCELEROMETER_ANGLE_X], -40, 40) * 0.6 + clamp([ACCELEROMETER_ANGLE_Y], -40, 40) * 0.4"/>
-            <Ellipse x="33" y="33" width="384" height="384"><Fill color="#FFFFFFFF"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #1C000000 #31000000 #38000000 #31000000 #1C000000 #00FFFFFF #26FFFFFF #42FFFFFF #4CFFFFFF #42FFFFFF #26FFFFFF #00000000 #1C000000 #31000000 #38000000 #31000000 #1C000000 #00FFFFFF #26FFFFFF #42FFFFFF #4CFFFFFF #42FFFFFF #26FFFFFF #00FFFFFF" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Fill></Ellipse>
+            <Gyro angle="clamp([ACCELEROMETER_ANGLE_X], -40, 40) * 1.4 + clamp([ACCELEROMETER_ANGLE_Y], -40, 40) * 1.0"/>
+            <Ellipse x="33" y="33" width="384" height="384"><Fill color="#FFFFFFFF"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #14000000 #23000000 #29000000 #23000000 #14000000 #00FFFFFF #1CFFFFFF #31FFFFFF #38FFFFFF #31FFFFFF #1CFFFFFF #00000000 #14000000 #23000000 #29000000 #23000000 #14000000 #00FFFFFF #1CFFFFFF #31FFFFFF #38FFFFFF #31FFFFFF #1CFFFFFF #00FFFFFF" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Fill></Ellipse>
           </PartDraw>
           <PartDraw name="ringSheen" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
-            <Gyro angle="clamp([ACCELEROMETER_ANGLE_X], -40, 40) * -0.4 + clamp([ACCELEROMETER_ANGLE_Y], -40, 40) * -0.3"/>
-            <Ellipse x="16.5" y="16.5" width="417" height="417"><Stroke color="#FFFFFFFF" thickness="33"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0DFFFFFF #26FFFFFF #33FFFFFF #26FFFFFF #0DFFFFFF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0DFFFFFF #26FFFFFF #33FFFFFF #26FFFFFF #0DFFFFFF #00FFFFFF #00000000" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Stroke></Ellipse>
+            <Gyro angle="clamp([ACCELEROMETER_ANGLE_X], -40, 40) * -0.9 + clamp([ACCELEROMETER_ANGLE_Y], -40, 40) * -0.7"/>
+            <Ellipse x="16.5" y="16.5" width="417" height="417"><Stroke color="#FFFFFFFF" thickness="33"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0AFFFFFF #1DFFFFFF #26FFFFFF #1DFFFFFF #0AFFFFFF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0AFFFFFF #1DFFFFFF #26FFFFFF #1DFFFFFF #0AFFFFFF #00FFFFFF #00000000" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Stroke></Ellipse>
           </PartDraw>
         </Group>
       </BooleanOption>
@@ -55,10 +55,10 @@
         <Group name="sheenFalse" x="0" y="0" width="450" height="450">
           <Variant mode="AMBIENT" target="alpha" value="0"/>
           <PartDraw name="dialSheen" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
-            <Ellipse x="33" y="33" width="384" height="384"><Fill color="#FFFFFFFF"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #1C000000 #31000000 #38000000 #31000000 #1C000000 #00FFFFFF #26FFFFFF #42FFFFFF #4CFFFFFF #42FFFFFF #26FFFFFF #00000000 #1C000000 #31000000 #38000000 #31000000 #1C000000 #00FFFFFF #26FFFFFF #42FFFFFF #4CFFFFFF #42FFFFFF #26FFFFFF #00FFFFFF" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Fill></Ellipse>
+            <Ellipse x="33" y="33" width="384" height="384"><Fill color="#FFFFFFFF"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #14000000 #23000000 #29000000 #23000000 #14000000 #00FFFFFF #1CFFFFFF #31FFFFFF #38FFFFFF #31FFFFFF #1CFFFFFF #00000000 #14000000 #23000000 #29000000 #23000000 #14000000 #00FFFFFF #1CFFFFFF #31FFFFFF #38FFFFFF #31FFFFFF #1CFFFFFF #00FFFFFF" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Fill></Ellipse>
           </PartDraw>
           <PartDraw name="ringSheen" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
-            <Ellipse x="16.5" y="16.5" width="417" height="417"><Stroke color="#FFFFFFFF" thickness="33"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0DFFFFFF #26FFFFFF #33FFFFFF #26FFFFFF #0DFFFFFF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0DFFFFFF #26FFFFFF #33FFFFFF #26FFFFFF #0DFFFFFF #00FFFFFF #00000000" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Stroke></Ellipse>
+            <Ellipse x="16.5" y="16.5" width="417" height="417"><Stroke color="#FFFFFFFF" thickness="33"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0AFFFFFF #1DFFFFFF #26FFFFFF #1DFFFFFF #0AFFFFFF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0AFFFFFF #1DFFFFFF #26FFFFFF #1DFFFFFF #0AFFFFFF #00FFFFFF #00000000" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Stroke></Ellipse>
           </PartDraw>
         </Group>
       </BooleanOption>
@@ -108,7 +108,7 @@
     </Group>
     <Group name="teeth" x="0" y="0" width="450" height="450">
       <PartDraw name="tooth0" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="0">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -123,7 +123,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth1" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="30">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -138,7 +138,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth2" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="60">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -153,7 +153,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth3" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="90">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -168,7 +168,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth4" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="120">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -183,7 +183,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth5" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="150">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -198,7 +198,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth6" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="180">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -213,7 +213,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth7" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="210">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -228,7 +228,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth8" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="240">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -243,7 +243,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth9" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="270">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -258,7 +258,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth10" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="300">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
@@ -273,7 +273,7 @@
         <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth11" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="330">
-        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#A30A0B0C"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
         <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
         <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>

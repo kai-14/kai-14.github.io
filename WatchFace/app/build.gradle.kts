@@ -11,8 +11,8 @@ android {
         applicationId = "com.kai14.watchface.tidal"
         minSdk = 34
         targetSdk = 34
-        versionCode = 7
-        versionName = "1.6"
+        versionCode = 8
+        versionName = "1.7"
     }
 
     // The permanent watch face key. CI decodes it from repo secrets and sets these variables;

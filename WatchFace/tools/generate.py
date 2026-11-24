@@ -50,18 +50,21 @@ def cfg(i):
 
 # Per style: what each part of the face is painted with.
 STYLE = {
-    "classic": dict(base=cfg(1), tint=None, glow=["#8CFFFFFF", "#1FFFFFFF", "#00000000", "#7A000000"],
-                    sub_base=cfg(3), sub_tint=None, sub_glow=["#5CFFFFFF", "#00FFFFFF", "#36000000"],
+    "classic": dict(base=cfg(1), tint=None, glow=["#80FFFFFF", "#59FFFFFF", "#2EFFFFFF", "#0DFFFFFF", "#00000000", "#47000000", "#47000000"],
+                    sub_base=cfg(3), sub_tint=None, sub_glow=["#5CFFFFFF", "#33FFFFFF", "#0FFFFFFF", "#00000000", "#33000000", "#33000000"],
                     mark=WHITE, dots="#80FFFFFF", hand="#FFFFFFFF", ring=RING, sub_well="#14000000"),
-    "dark": dict(base="#FF0B0C0D", tint=(cfg(2), 120), glow=["#40FFFFFF", "#0FFFFFFF", "#00000000", "#A6000000"],
-                 sub_base="#FF0B0C0D", sub_tint=(cfg(1), 110), sub_glow=["#36FFFFFF", "#00FFFFFF", "#47000000"],
+    "dark": dict(base="#FF0B0C0D", tint=(cfg(2), 120), glow=["#40FFFFFF", "#2EFFFFFF", "#17FFFFFF", "#05FFFFFF", "#00000000", "#66000000", "#66000000"],
+                 sub_base="#FF0B0C0D", sub_tint=(cfg(1), 110), sub_glow=["#38FFFFFF", "#1FFFFFFF", "#0AFFFFFF", "#00000000", "#40000000", "#40000000"],
                  mark="#E6FFFFFF", dots="#59FFFFFF", hand=cfg(0), ring="#2EFFFFFF", sub_well="#40000000"),
     "noir": dict(base="#FF000000", tint=None, glow=None,
                  sub_base="#FF000000", sub_tint=None, sub_glow=None,
                  mark=cfg(0), dots="#66FFFFFF", hand=cfg(0), ring="#33FFFFFF", sub_well="#FF000000"),
 }
-GLOW_POS = [0, 0.35, 0.6, 1]
-SUB_GLOW_POS = [0, 0.55, 1]
+# Large, soft light from the upper left. The dial's rim spans about 0.38-0.69 of GLOW's radius.
+GLOW = (190, 170, 420)            # centre x, centre y, radius
+GLOW_POS = [0, 0.12, 0.25, 0.38, 0.5, 0.69, 1]
+SUB_GLOW_R = 170
+SUB_GLOW_POS = [0, 0.15, 0.35, 0.5, 0.75, 1]
 
 # Geometry (450 canvas, scaled by the watch to 480x480 on the Ultra)
 R_OUTER_RING = 214
@@ -233,7 +236,7 @@ def wff_face(style, ind):
     st = STYLE[style]
     L = []
     # Dial: lit from the upper left, darker at the rim
-    L += wff_disc(ind, "dial", 0, 0, W, st["base"], st["tint"], st["glow"], GLOW_POS, 185, 165, 320)
+    L += wff_disc(ind, "dial", 0, 0, W, st["base"], st["tint"], st["glow"], GLOW_POS, *GLOW)
     L.append(f'{ind}<PartDraw name="rings" x="0" y="0" width="{W}" height="{W}">')
     L.append(f'{ind}  <Variant mode="AMBIENT" target="alpha" value="0"/>')
     for r in (R_OUTER_RING, R_TRACK_IN):
@@ -265,7 +268,7 @@ def wff_face(style, ind):
     L.append(f"{i2}</PartDraw>")
     d = SUB_DISC_R
     L += wff_disc(i2, "subdialDisc", sc - d, sc - d, 2 * d, st["sub_base"], st["sub_tint"], st["sub_glow"], SUB_GLOW_POS,
-                  d - 25, d - 30, 2 * d, ring=st["ring"])
+                  d - 25, d - 30, SUB_GLOW_R, ring=st["ring"])
     L.append(f'{i2}<Group name="subdialMarks" x="0" y="0" width="{S}" height="{S}">')
     L.append(f'{i2}  <Variant mode="AMBIENT" target="alpha" value="110"/>')
     L += wff_draw(subdial_marks(sc, st), S, i2 + "  ", "subdialMarks")
@@ -371,9 +374,9 @@ def build_svg(theme, style, logo, hh=10, mm=10, ss=0):
     key = f"{style}-{theme[0]}"
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {W}" width="{W}" height="{W}">', "<defs>"]
     if st["glow"]:
-        o.append(f'<radialGradient id="g-{key}" gradientUnits="userSpaceOnUse" cx="185" cy="165" r="320">{svg_stops(st["glow"], GLOW_POS)}</radialGradient>')
+        o.append(f'<radialGradient id="g-{key}" gradientUnits="userSpaceOnUse" cx="{GLOW[0]}" cy="{GLOW[1]}" r="{GLOW[2]}">{svg_stops(st["glow"], GLOW_POS)}</radialGradient>')
     if st["sub_glow"]:
-        o.append(f'<radialGradient id="s-{key}" gradientUnits="userSpaceOnUse" cx="{SUB_R - 25}" cy="{SUB_R - 30}" r="{2 * SUB_DISC_R}">'
+        o.append(f'<radialGradient id="s-{key}" gradientUnits="userSpaceOnUse" cx="{SUB_R - 25}" cy="{SUB_R - 30}" r="{SUB_GLOW_R}">'
                  f'{svg_stops(st["sub_glow"], SUB_GLOW_POS)}</radialGradient>')
     o += [f'<clipPath id="c-{key}"><circle cx="{C}" cy="{C}" r="{C}"/></clipPath>', "</defs>",
           f'<g clip-path="url(#c-{key})"><rect width="{W}" height="{W}" fill="#000"/>']
