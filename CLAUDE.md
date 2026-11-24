@@ -17,8 +17,8 @@ The owner makes custom watch faces here and installs them on their watch from a 
 - **New faces**: copy `WatchFace/` to a new folder and give it its own `applicationId`/`namespace`
   so it can sit on the watch next to the others. Add its path to `.github/workflows/watchface.yml`
   if it should build in CI too.
-- Design rule: faces can be *inspired by* a watch the owner likes, but never include brand
-  logos, names or trademarks.
+- Design rule: faces can be *inspired by* a watch the owner likes. Logos and marks are the
+  owner's call; these faces are for personal use on their own watch.
 
 ## Building
 
