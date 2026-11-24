@@ -31,20 +31,20 @@ ACCENT = ("accent", 0)
 CASE = "#FF0C0D0E"          # chapter ring and teeth
 NUMERAL = "#FFE4E6E8"
 LUME = "#FFCFD6C8"
-TICK = "#FFCDBF78"           # pale yellow minute ticks
+TICK = "#FFD3CFBC"           # pale cream ticks, two between each pair of hours
 SILVER = "#FFD5D9DD"
 HAND_CORE = "#FF0D0E0F"
 PRINT = "#FFB4B8BC"
 DIAL_GLOW = (["#38FFFFFF", "#0DFFFFFF", "#00000000", "#80000000"], [0, 0.4, 0.7, 1])
 
-R_DIAL = 158                 # visible dial radius between the teeth
-TOOTH = (124, 176, 40)       # inner radius, outer radius, width
-R_NUM = 192
-R_LUME = 139
-TICKS = (207, 219)
-HOUR_HAND = (98, 17)         # length, max width
-MIN_HAND = (150, 15)
-SEC_HAND = (34, 182)         # tail, length
+R_DIAL = 192                 # visible dial radius between the teeth
+TOOTH = (132, 204, 50)       # inner radius, outer radius, width
+R_NUM = 179                  # numerals sit on the outer part of each tooth
+R_LUME = 149                 # lume bar on the inner part
+TICKS = (197, 212)
+HOUR_HAND = (112, 14)        # length, max width
+MIN_HAND = (166, 13)
+SEC_HAND = (36, 186)         # tail, length
 
 
 def f(v):
@@ -82,18 +82,18 @@ def teeth():
     out = []
     r0, r1, tw = TOOTH
     for h in range(12):
-        out.append([("rrect", dict(r=(r0 + r1) / 2, h=r1 - r0, w=tw, rad=8, deg=h * 30, fill=CASE, stroke=None, sw=0)),
-                    ("rrect", dict(r=R_LUME, h=8, w=16, rad=2, deg=h * 30, fill=LUME, stroke=None, sw=0))])
+        out.append([("rrect", dict(r=(r0 + r1) / 2, h=r1 - r0, w=tw, rad=11, deg=h * 30, fill=CASE, stroke=None, sw=0)),
+                    ("rrect", dict(r=R_LUME, h=9, w=21, rad=2, deg=h * 30, fill=LUME, stroke=None, sw=0))])
     return out
 
 
 def minute_ticks():
     items = []
-    for i in range(60):
-        if i % 5:
-            x1, y1 = polar(TICKS[0], i * 6)
-            x2, y2 = polar(TICKS[1], i * 6)
-            items.append(line(x1, y1, x2, y2, 1.8, TICK))
+    for h in range(12):
+        for off in (10, 20):
+            x1, y1 = polar(TICKS[0], h * 30 + off)
+            x2, y2 = polar(TICKS[1], h * 30 + off)
+            items.append(line(x1, y1, x2, y2, 2.2, TICK))
     return items
 
 
@@ -101,13 +101,13 @@ def numerals():
     out = []
     for h in range(1, 13):
         x, y = polar(R_NUM, h * 30)
-        out.append(("text", dict(cx=x, cy=y, size=25, text=str(h), color=NUMERAL)))
+        out.append(("text", dict(cx=x, cy=y, size=24, text=str(h), color=NUMERAL, angle=h * 30)))
     return out
 
 
 def sword(length, wmax, color_body=SILVER, color_core=HAND_CORE, steps=36):
     """Skeleton sword hand pointing up from (C, C): silver silhouette, black core, crisp outline."""
-    tail, neck, shoulder = 14, 16, 0.7 * length
+    tail, neck, shoulder = 14, 16, 0.8 * length
 
     def width(d):  # d = distance from pivot toward the tip (negative = tail)
         if d <= shoulder:
@@ -149,21 +149,21 @@ def logo_mark(logo, cx, cy, color, h=20):
 
 
 # Day-date window at 3
-WIN = dict(x=C + 46, y=C - 14, w=74, h=28, split=C + 94)
+WIN = dict(x=C + 28, y=C - 17, w=90, h=34, split=C + 88)
 
 
 def dial_print():
-    return [("text", dict(cx=C, cy=C + 66, size=22, text="100m", color=PRINT, weight="NORMAL")),
-            ("text", dict(cx=C, cy=C + 86, size=10.5, text="WATER RESISTANT", color=PRINT)),
-            ("text", dict(cx=C, cy=C + 100, size=12, text="PROFESSIONAL", color=PRINT))]
+    return [("text", dict(cx=C, cy=C + 72, size=27, text="100m", color=PRINT, weight="NORMAL")),
+            ("text", dict(cx=C, cy=C + 96, size=12, text="WATER RESISTANT", color=PRINT)),
+            ("text", dict(cx=C, cy=C + 112, size=14, text="PROFESSIONAL", color=PRINT))]
 
 
 def date_window():
     x, y, w, h, s = WIN["x"], WIN["y"], WIN["w"], WIN["h"], WIN["split"]
     return [("box", dict(x=x, y=y, w=w, h=h, rad=3, fill="#FFECEDED", stroke="#FF8E9399", sw=2.2)),
             line(s, y + 3, s, y + h - 3, 1.4, "#FF8E9399"),
-            ("text", dict(cx=(x + s) / 2, cy=C, size=15, source="day", text="MON", color="#FF1B1C1D")),
-            ("text", dict(cx=(s + x + w) / 2, cy=C, size=15, source="date", text="1", color="#FF1B1C1D"))]
+            ("text", dict(cx=(x + s) / 2, cy=C, size=18, source="day", text="MON", color="#FF1B1C1D")),
+            ("text", dict(cx=(s + x + w) / 2, cy=C, size=18, source="date", text="1", color="#FF1B1C1D"))]
 
 
 # ---------------------------------------------------------------------------
@@ -205,7 +205,8 @@ def wff_text(p, ind, name):
     else:
         body = p["text"]
     bw, bh = round(bw / 2) * 2, round(bh / 2) * 2   # PartText takes whole pixels
-    return [f'{ind}<PartText name="{name}" x="{round(p["cx"]) - bw // 2}" y="{round(p["cy"]) - bh // 2}" width="{bw}" height="{bh}">',
+    rot = f' angle="{p["angle"]}"' if p.get("angle") else ""
+    return [f'{ind}<PartText name="{name}" x="{round(p["cx"]) - bw // 2}" y="{round(p["cy"]) - bh // 2}" width="{bw}" height="{bh}"{rot}>',
             f'{ind}  <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="{f(size)}" weight="{p.get("weight", "BOLD")}" '
             f'color="{wcol(p["color"])}">{body}</Font></Text>',
             f"{ind}</PartText>"]
@@ -247,7 +248,7 @@ def build_wff():
     L.append(f'{ind}  <ListConfiguration id="logo">')
     for lid, _ in LOGOS:
         L.append(f'{ind}    <ListOption id="{lid}">')
-        items = logo_mark(lid, C, C - 72, SILVER) or [("dot", dict(cx=C, cy=C - 72, r=0.1, color="#00000000"))]
+        items = logo_mark(lid, C, C - 84, SILVER) or [("dot", dict(cx=C, cy=C - 84, r=0.1, color="#00000000"))]
         L += wff_draw(items, ind + "      ", f"logo_{lid}")
         L.append(f"{ind}    </ListOption>")
     L.append(f"{ind}  </ListConfiguration>")
@@ -296,7 +297,7 @@ def build_wff():
 
 
 def seconds_items():
-    return [line(C, C + SEC_HAND[0], C, C - SEC_HAND[1], 2.6, ACCENT),
+    return [line(C, C + SEC_HAND[0], C, C - SEC_HAND[1], 3.4, ACCENT, "BUTT"),
             ("dot", dict(cx=C, cy=C, r=4.5, color=ACCENT)),
             ("dot", dict(cx=C, cy=C, r=1.6, color=HAND_CORE))]
 
@@ -325,8 +326,10 @@ def svg_items(items, pick, extra=""):
         elif kind == "text":
             col, op = scol(p["color"], pick)
             wt = "normal" if p.get("weight") == "NORMAL" else "bold"
+            rot = f' transform="rotate({p["angle"]} {f(p["cx"])} {f(p["cy"])})"' if p.get("angle") else ""
             o.append(f'<text x="{f(p["cx"])}" y="{f(p["cy"])}" font-family="Roboto, Segoe UI, sans-serif" font-size="{f(p["size"])}" '
-                     f'font-weight="{wt}" fill="{col}" text-anchor="middle" dominant-baseline="central">{p["text"]}</text>')
+                     f'font-weight="{wt}" fill="{col}" text-anchor="middle" dominant-baseline="central"'
+                     f'{rot}>{p["text"]}</text>')
     return o
 
 
@@ -343,7 +346,7 @@ def build_svg(pick, logo, hh=10, mm=10, ss=32):
          f'<circle cx="{C}" cy="{C}" r="{R_DIAL}" fill="{dc}"/>',
          f'<circle cx="{C}" cy="{C}" r="{R_DIAL}" fill="url(#g)" stroke="#000" stroke-width="3"/>']
     o += svg_items(dial_print(), pick)
-    o += svg_items(logo_mark(logo, C, C - 72, SILVER), pick)
+    o += svg_items(logo_mark(logo, C, C - 84, SILVER), pick)
     for items in teeth():
         o += svg_items(items, pick)
     o += svg_items(minute_ticks(), pick)

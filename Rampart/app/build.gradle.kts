@@ -11,8 +11,8 @@ android {
         applicationId = "com.kai14.watchface.rampart"
         minSdk = 34
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 3
+        versionName = "1.2"
     }
 
     // The permanent watch face key. CI decodes it from repo secrets and sets these variables;

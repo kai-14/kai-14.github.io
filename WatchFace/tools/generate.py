@@ -50,11 +50,11 @@ def cfg(i):
 
 # Per style: what each part of the face is painted with.
 STYLE = {
-    "classic": dict(base=cfg(1), tint=None, glow=["#66FFFFFF", "#14FFFFFF", "#00000000", "#59000000"],
-                    sub_base=cfg(3), sub_tint=None, sub_glow=["#40FFFFFF", "#00FFFFFF", "#26000000"],
+    "classic": dict(base=cfg(1), tint=None, glow=["#8CFFFFFF", "#1FFFFFFF", "#00000000", "#7A000000"],
+                    sub_base=cfg(3), sub_tint=None, sub_glow=["#5CFFFFFF", "#00FFFFFF", "#36000000"],
                     mark=WHITE, dots="#80FFFFFF", hand="#FFFFFFFF", ring=RING, sub_well="#14000000"),
-    "dark": dict(base="#FF0B0C0D", tint=(cfg(2), 120), glow=["#2EFFFFFF", "#0AFFFFFF", "#00000000", "#8C000000"],
-                 sub_base="#FF0B0C0D", sub_tint=(cfg(1), 110), sub_glow=["#26FFFFFF", "#00FFFFFF", "#33000000"],
+    "dark": dict(base="#FF0B0C0D", tint=(cfg(2), 120), glow=["#40FFFFFF", "#0FFFFFFF", "#00000000", "#A6000000"],
+                 sub_base="#FF0B0C0D", sub_tint=(cfg(1), 110), sub_glow=["#36FFFFFF", "#00FFFFFF", "#47000000"],
                  mark="#E6FFFFFF", dots="#59FFFFFF", hand=cfg(0), ring="#2EFFFFFF", sub_well="#40000000"),
     "noir": dict(base="#FF000000", tint=None, glow=None,
                  sub_base="#FF000000", sub_tint=None, sub_glow=None,
