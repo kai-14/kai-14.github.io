@@ -11,15 +11,29 @@ android {
         applicationId = "com.kai14.watchface.rampart"
         minSdk = 34
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
+    }
+
+    // The permanent watch face key. CI decodes it from repo secrets and sets these variables;
+    // without them (e.g. a quick local build) release falls back to the debug key.
+    val keystore = System.getenv("WATCHFACE_KEYSTORE")
+    signingConfigs {
+        if (keystore != null) {
+            create("permanent") {
+                storeFile = file(keystore)
+                storeType = "pkcs12"
+                storePassword = System.getenv("WATCHFACE_KEYSTORE_PASSWORD")
+                keyAlias = "watchface"
+                keyPassword = System.getenv("WATCHFACE_KEYSTORE_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            // Sideload-friendly: sign release with the debug key. Use your own key for Play Store.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName(if (keystore != null) "permanent" else "debug")
         }
     }
 }

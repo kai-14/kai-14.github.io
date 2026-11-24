@@ -45,8 +45,26 @@ jobs:
           git clone --depth 1 https://github.com/google/watchface.git /tmp/wff
           python3 tools/validate.py /tmp/wff/third_party/wff/specification/documents/2/watchface.xsd
 
+      - name: Decode signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.WATCHFACE_KEYSTORE_B64 }}
+        run: |
+          if [ -z "$KEYSTORE_B64" ]; then
+            echo "::warning::WATCHFACE_KEYSTORE_B64 secret not set - signing with a throwaway debug key"
+            exit 0
+          fi
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/watchfaces.p12"
+          echo "WATCHFACE_KEYSTORE=$RUNNER_TEMP/watchfaces.p12" >> "$GITHUB_ENV"
+
       - name: Build APK
+        env:
+          WATCHFACE_KEYSTORE_PASSWORD: ${{ secrets.WATCHFACE_KEYSTORE_PASSWORD }}
         run: gradle --no-daemon assembleRelease
+
+      - name: Show signing certificate
+        run: |
+          apksigner=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
+          "$apksigner" verify --print-certs app/build/outputs/apk/release/*.apk | grep -i 'SHA-256'
 
       - uses: actions/upload-artifact@v4
         with:
