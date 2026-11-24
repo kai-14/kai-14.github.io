@@ -30,6 +30,9 @@ The owner makes custom watch faces here and installs them on their watch from a 
   in place. The keystore and its password live in `%USERPROFILE%\.android-keys\` on the owner's PC; never commit them.
   Local builds without `WATCHFACE_KEYSTORE` use the debug key and won't install over a CI build.
 - Windows PowerShell variable names are case-insensitive: `$s` and `$S` are the same variable.
+- WFF gradients: the enclosing `Fill`/`Stroke` colour must be opaque (e.g. `#FFFFFFFF`). Android multiplies the
+  gradient by that colour's alpha, so `#00000000` hides it on the watch while browser previews still show it.
+- Previews that use `<image>` or `<foreignObject>` must be embedded with `<object>`, not `<img>`, when rendering.
 - **Locally** (faster for quick changes): needs JDK 17 and the Android SDK
   (`ANDROID_HOME` set; platform 35 and build-tools installed), then `gradle assembleRelease` inside the
   face folder. The APK lands in `app/build/outputs/apk/release/`.

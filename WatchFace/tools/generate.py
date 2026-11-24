@@ -220,7 +220,7 @@ def wff_disc(ind, name, x, y, size, base, tint, glow, glow_pos, gcx, gcy, gr, ri
         if ambient_hide:
             L.append(f'{ind}  <Variant mode="AMBIENT" target="alpha" value="0"/>')
         if glow:
-            L.append(f'{ind}  <Ellipse x="0" y="0" width="{f(size)}" height="{f(size)}"><Fill color="#00000000">'
+            L.append(f'{ind}  <Ellipse x="0" y="0" width="{f(size)}" height="{f(size)}"><Fill color="#FFFFFFFF">'
                      f'<RadialGradient centerX="{f(gcx)}" centerY="{f(gcy)}" radius="{f(gr)}" colors="{" ".join(glow)}" '
                      f'positions="{" ".join(f(v) for v in glow_pos)}"/></Fill></Ellipse>')
         if ring:

@@ -24,14 +24,45 @@
       <ListOption id="anthropic" displayName="@string/logo_anthropic"/>
       <ListOption id="claude" displayName="@string/logo_claude"/>
     </ListConfiguration>
+    <BooleanConfiguration id="tilt" displayName="@string/tilt" defaultValue="TRUE"/>
   </UserConfigurations>
   <Scene backgroundColor="#FF0C0D0E">
     <PartDraw name="dial" x="0" y="0" width="450" height="450">
       <Variant mode="AMBIENT" target="alpha" value="0"/>
       <Ellipse x="33" y="33" width="384" height="384"><Fill color="[CONFIGURATION.dial.0]"/></Ellipse>
-      <Ellipse x="33" y="33" width="384" height="384"><Fill color="#00000000"><RadialGradient centerX="180" centerY="155" radius="384" colors="#38FFFFFF #0DFFFFFF #00000000 #80000000" positions="0 0.4 0.7 1"/></Fill></Ellipse>
+      <Ellipse x="33" y="33" width="384" height="384"><Fill color="#FFFFFFFF"><RadialGradient centerX="180" centerY="155" radius="384" colors="#38FFFFFF #0DFFFFFF #00000000 #80000000" positions="0 0.4 0.7 1"/></Fill></Ellipse>
       <Ellipse x="33" y="33" width="384" height="384"><Stroke color="#FF000000" thickness="3"/></Ellipse>
     </PartDraw>
+    <PartImage name="metal" x="0" y="0" width="450" height="450">
+      <Variant mode="AMBIENT" target="alpha" value="0"/>
+      <Image resource="metal_texture"/>
+    </PartImage>
+    <BooleanConfiguration id="tilt">
+      <BooleanOption id="TRUE">
+        <Group name="sheenTrue" x="0" y="0" width="450" height="450">
+          <Variant mode="AMBIENT" target="alpha" value="0"/>
+          <PartDraw name="dialSheen" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
+            <Gyro angle="clamp([ACCELEROMETER_ANGLE_X], -40, 40) * 0.6 + clamp([ACCELEROMETER_ANGLE_Y], -40, 40) * 0.4"/>
+            <Ellipse x="33" y="33" width="384" height="384"><Fill color="#FFFFFFFF"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #1C000000 #31000000 #38000000 #31000000 #1C000000 #00FFFFFF #26FFFFFF #42FFFFFF #4CFFFFFF #42FFFFFF #26FFFFFF #00000000 #1C000000 #31000000 #38000000 #31000000 #1C000000 #00FFFFFF #26FFFFFF #42FFFFFF #4CFFFFFF #42FFFFFF #26FFFFFF #00FFFFFF" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Fill></Ellipse>
+          </PartDraw>
+          <PartDraw name="ringSheen" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
+            <Gyro angle="clamp([ACCELEROMETER_ANGLE_X], -40, 40) * -0.4 + clamp([ACCELEROMETER_ANGLE_Y], -40, 40) * -0.3"/>
+            <Ellipse x="16.5" y="16.5" width="417" height="417"><Stroke color="#FFFFFFFF" thickness="33"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0DFFFFFF #26FFFFFF #33FFFFFF #26FFFFFF #0DFFFFFF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0DFFFFFF #26FFFFFF #33FFFFFF #26FFFFFF #0DFFFFFF #00FFFFFF #00000000" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Stroke></Ellipse>
+          </PartDraw>
+        </Group>
+      </BooleanOption>
+      <BooleanOption id="FALSE">
+        <Group name="sheenFalse" x="0" y="0" width="450" height="450">
+          <Variant mode="AMBIENT" target="alpha" value="0"/>
+          <PartDraw name="dialSheen" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
+            <Ellipse x="33" y="33" width="384" height="384"><Fill color="#FFFFFFFF"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #1C000000 #31000000 #38000000 #31000000 #1C000000 #00FFFFFF #26FFFFFF #42FFFFFF #4CFFFFFF #42FFFFFF #26FFFFFF #00000000 #1C000000 #31000000 #38000000 #31000000 #1C000000 #00FFFFFF #26FFFFFF #42FFFFFF #4CFFFFFF #42FFFFFF #26FFFFFF #00FFFFFF" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Fill></Ellipse>
+          </PartDraw>
+          <PartDraw name="ringSheen" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
+            <Ellipse x="16.5" y="16.5" width="417" height="417"><Stroke color="#FFFFFFFF" thickness="33"><SweepGradient centerX="225" centerY="225" startAngle="0" endAngle="360" colors="#00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0DFFFFFF #26FFFFFF #33FFFFFF #26FFFFFF #0DFFFFFF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #00FFFFFF #0DFFFFFF #26FFFFFF #33FFFFFF #26FFFFFF #0DFFFFFF #00FFFFFF #00000000" positions="0 0.04 0.08 0.12 0.17 0.21 0.25 0.29 0.33 0.38 0.42 0.46 0.5 0.54 0.58 0.62 0.67 0.71 0.75 0.79 0.83 0.88 0.92 0.96 1"/></Stroke></Ellipse>
+          </PartDraw>
+        </Group>
+      </BooleanOption>
+    </BooleanConfiguration>
     <Group name="print" x="0" y="0" width="450" height="450">
       <Variant mode="AMBIENT" target="alpha" value="0"/>
       <PartText name="print0" x="164" y="278" width="122" height="38">
@@ -79,50 +110,182 @@
       <PartDraw name="tooth0" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="0">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="204.6" startY="26.8" endX="245.4" endY="81.2" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth1" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="30">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="193.73" startY="40.64" endX="256.27" endY="67.36" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth2" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="60">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="191.24" startY="58.07" endX="258.76" endY="49.93" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth3" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="90">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="197.8" startY="74.4" endX="252.2" endY="33.6" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth4" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="120">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="211.64" startY="85.27" endX="238.36" endY="22.73" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth5" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="150">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="229.07" startY="87.76" endX="220.93" endY="20.24" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth6" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="180">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="245.4" startY="81.2" endX="204.6" endY="26.8" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth7" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="210">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="256.27" startY="67.36" endX="193.73" endY="40.64" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth8" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="240">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="258.76" startY="49.93" endX="191.24" endY="58.07" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth9" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="270">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="252.2" startY="33.6" endX="197.8" endY="74.4" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth10" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="300">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="238.36" startY="22.73" endX="211.64" endY="85.27" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
       <PartDraw name="tooth11" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="330">
         <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
         <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <Line startX="200" startY="27" endX="200" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200" startY="64" endX="200.84" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="200.84" startY="68.21" endX="203.22" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="203.22" startY="71.78" endX="206.79" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="206.79" startY="74.16" endX="211" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="211" startY="75" endX="239" endY="75"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="239" startY="75" endX="243.21" endY="74.16"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="243.21" startY="74.16" endX="246.78" endY="71.78"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="246.78" startY="71.78" endX="249.16" endY="68.21"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="249.16" startY="68.21" endX="250" endY="64"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
+        <Line startX="250" startY="64" endX="250" endY="27"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="220.93" startY="20.24" endX="229.07" endY="87.76" colors="#8CFFFFFF #1FFFFFFF #00FFFFFF" positions="0 0.45 1"/></Stroke></Line>
       </PartDraw>
     </Group>
     <Group name="ticks" x="0" y="0" width="450" height="450">
@@ -209,47 +372,47 @@
     <Group name="hourHand" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
       <Transform target="angle" value="[HOUR_0_11_MINUTE] * 30"/>
       <PartDraw name="hourHandShape" x="0" y="0" width="450" height="450">
-        <Line startX="225" startY="239" endX="225" endY="235.5"><Stroke color="#FFD5D9DD" thickness="6" cap="BUTT"/></Line>
-        <Line startX="225" startY="235.5" endX="225" endY="232"><Stroke color="#FFD5D9DD" thickness="6" cap="BUTT"/></Line>
-        <Line startX="225" startY="232" endX="225" endY="228.5"><Stroke color="#FFD5D9DD" thickness="6" cap="BUTT"/></Line>
-        <Line startX="225" startY="228.5" endX="225" endY="225"><Stroke color="#FFD5D9DD" thickness="6" cap="BUTT"/></Line>
-        <Line startX="225" startY="225" endX="225" endY="221.5"><Stroke color="#FFD5D9DD" thickness="6.16" cap="BUTT"/></Line>
-        <Line startX="225" startY="221.5" endX="225" endY="218"><Stroke color="#FFD5D9DD" thickness="6.47" cap="BUTT"/></Line>
-        <Line startX="225" startY="218" endX="225" endY="214.5"><Stroke color="#FFD5D9DD" thickness="6.78" cap="BUTT"/></Line>
-        <Line startX="225" startY="214.5" endX="225" endY="211"><Stroke color="#FFD5D9DD" thickness="7.09" cap="BUTT"/></Line>
-        <Line startX="225" startY="211" endX="225" endY="207.5"><Stroke color="#FFD5D9DD" thickness="7.41" cap="BUTT"/></Line>
-        <Line startX="225" startY="207.5" endX="225" endY="204"><Stroke color="#FFD5D9DD" thickness="7.72" cap="BUTT"/></Line>
-        <Line startX="225" startY="204" endX="225" endY="200.5"><Stroke color="#FFD5D9DD" thickness="8.03" cap="BUTT"/></Line>
-        <Line startX="225" startY="200.5" endX="225" endY="197"><Stroke color="#FFD5D9DD" thickness="8.34" cap="BUTT"/></Line>
-        <Line startX="225" startY="197" endX="225" endY="193.5"><Stroke color="#FFD5D9DD" thickness="8.66" cap="BUTT"/></Line>
-        <Line startX="225" startY="193.5" endX="225" endY="190"><Stroke color="#FFD5D9DD" thickness="8.97" cap="BUTT"/></Line>
-        <Line startX="225" startY="190" endX="225" endY="186.5"><Stroke color="#FFD5D9DD" thickness="9.28" cap="BUTT"/></Line>
-        <Line startX="225" startY="186.5" endX="225" endY="183"><Stroke color="#FFD5D9DD" thickness="9.59" cap="BUTT"/></Line>
-        <Line startX="225" startY="183" endX="225" endY="179.5"><Stroke color="#FFD5D9DD" thickness="9.91" cap="BUTT"/></Line>
-        <Line startX="225" startY="179.5" endX="225" endY="176"><Stroke color="#FFD5D9DD" thickness="10.22" cap="BUTT"/></Line>
-        <Line startX="225" startY="176" endX="225" endY="172.5"><Stroke color="#FFD5D9DD" thickness="10.53" cap="BUTT"/></Line>
-        <Line startX="225" startY="172.5" endX="225" endY="169"><Stroke color="#FFD5D9DD" thickness="10.84" cap="BUTT"/></Line>
-        <Line startX="225" startY="169" endX="225" endY="165.5"><Stroke color="#FFD5D9DD" thickness="11.16" cap="BUTT"/></Line>
-        <Line startX="225" startY="165.5" endX="225" endY="162"><Stroke color="#FFD5D9DD" thickness="11.47" cap="BUTT"/></Line>
-        <Line startX="225" startY="162" endX="225" endY="158.5"><Stroke color="#FFD5D9DD" thickness="11.78" cap="BUTT"/></Line>
-        <Line startX="225" startY="158.5" endX="225" endY="155"><Stroke color="#FFD5D9DD" thickness="12.09" cap="BUTT"/></Line>
-        <Line startX="225" startY="155" endX="225" endY="151.5"><Stroke color="#FFD5D9DD" thickness="12.41" cap="BUTT"/></Line>
-        <Line startX="225" startY="151.5" endX="225" endY="148"><Stroke color="#FFD5D9DD" thickness="12.72" cap="BUTT"/></Line>
-        <Line startX="225" startY="148" endX="225" endY="144.5"><Stroke color="#FFD5D9DD" thickness="13.03" cap="BUTT"/></Line>
-        <Line startX="225" startY="144.5" endX="225" endY="141"><Stroke color="#FFD5D9DD" thickness="13.34" cap="BUTT"/></Line>
-        <Line startX="225" startY="141" endX="225" endY="137.5"><Stroke color="#FFD5D9DD" thickness="13.66" cap="BUTT"/></Line>
-        <Line startX="225" startY="137.5" endX="225" endY="134"><Stroke color="#FFD5D9DD" thickness="13.97" cap="BUTT"/></Line>
-        <Line startX="225" startY="134" endX="225" endY="130.5"><Stroke color="#FFD5D9DD" thickness="12.03" cap="BUTT"/></Line>
-        <Line startX="225" startY="130.5" endX="225" endY="127"><Stroke color="#FFD5D9DD" thickness="9.84" cap="BUTT"/></Line>
-        <Line startX="225" startY="127" endX="225" endY="123.5"><Stroke color="#FFD5D9DD" thickness="7.66" cap="BUTT"/></Line>
-        <Line startX="225" startY="123.5" endX="225" endY="120"><Stroke color="#FFD5D9DD" thickness="5.47" cap="BUTT"/></Line>
-        <Line startX="225" startY="120" endX="225" endY="116.5"><Stroke color="#FFD5D9DD" thickness="3.28" cap="BUTT"/></Line>
-        <Line startX="225" startY="116.5" endX="225" endY="113"><Stroke color="#FFD5D9DD" thickness="1.09" cap="BUTT"/></Line>
-        <Line startX="222" startY="239" endX="218" endY="135.4"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
-        <Line startX="218" startY="135.4" endX="225" endY="113"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
-        <Line startX="225" startY="113" endX="232" endY="135.4"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
-        <Line startX="232" startY="135.4" endX="228" endY="239"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
-        <Line startX="228" startY="239" endX="222" endY="239"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
+        <Line startX="225" startY="239" endX="225" endY="235.5"><Stroke color="#FFFFFFFF" thickness="6" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="235.5" endX="225" endY="232"><Stroke color="#FFFFFFFF" thickness="6" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="232" endX="225" endY="228.5"><Stroke color="#FFFFFFFF" thickness="6" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="228.5" endX="225" endY="225"><Stroke color="#FFFFFFFF" thickness="6" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="225" endX="225" endY="221.5"><Stroke color="#FFFFFFFF" thickness="6.16" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="221.5" endX="225" endY="218"><Stroke color="#FFFFFFFF" thickness="6.47" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="218" endX="225" endY="214.5"><Stroke color="#FFFFFFFF" thickness="6.78" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="214.5" endX="225" endY="211"><Stroke color="#FFFFFFFF" thickness="7.09" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="211" endX="225" endY="207.5"><Stroke color="#FFFFFFFF" thickness="7.41" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="207.5" endX="225" endY="204"><Stroke color="#FFFFFFFF" thickness="7.72" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="204" endX="225" endY="200.5"><Stroke color="#FFFFFFFF" thickness="8.03" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="200.5" endX="225" endY="197"><Stroke color="#FFFFFFFF" thickness="8.34" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="197" endX="225" endY="193.5"><Stroke color="#FFFFFFFF" thickness="8.66" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="193.5" endX="225" endY="190"><Stroke color="#FFFFFFFF" thickness="8.97" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="190" endX="225" endY="186.5"><Stroke color="#FFFFFFFF" thickness="9.28" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="186.5" endX="225" endY="183"><Stroke color="#FFFFFFFF" thickness="9.59" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="183" endX="225" endY="179.5"><Stroke color="#FFFFFFFF" thickness="9.91" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="179.5" endX="225" endY="176"><Stroke color="#FFFFFFFF" thickness="10.22" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="176" endX="225" endY="172.5"><Stroke color="#FFFFFFFF" thickness="10.53" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="172.5" endX="225" endY="169"><Stroke color="#FFFFFFFF" thickness="10.84" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="169" endX="225" endY="165.5"><Stroke color="#FFFFFFFF" thickness="11.16" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="165.5" endX="225" endY="162"><Stroke color="#FFFFFFFF" thickness="11.47" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="162" endX="225" endY="158.5"><Stroke color="#FFFFFFFF" thickness="11.78" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="158.5" endX="225" endY="155"><Stroke color="#FFFFFFFF" thickness="12.09" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="155" endX="225" endY="151.5"><Stroke color="#FFFFFFFF" thickness="12.41" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="151.5" endX="225" endY="148"><Stroke color="#FFFFFFFF" thickness="12.72" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="148" endX="225" endY="144.5"><Stroke color="#FFFFFFFF" thickness="13.03" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="144.5" endX="225" endY="141"><Stroke color="#FFFFFFFF" thickness="13.34" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="141" endX="225" endY="137.5"><Stroke color="#FFFFFFFF" thickness="13.66" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="137.5" endX="225" endY="134"><Stroke color="#FFFFFFFF" thickness="13.97" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="134" endX="225" endY="130.5"><Stroke color="#FFFFFFFF" thickness="12.03" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="130.5" endX="225" endY="127"><Stroke color="#FFFFFFFF" thickness="9.84" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="127" endX="225" endY="123.5"><Stroke color="#FFFFFFFF" thickness="7.66" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="123.5" endX="225" endY="120"><Stroke color="#FFFFFFFF" thickness="5.47" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="120" endX="225" endY="116.5"><Stroke color="#FFFFFFFF" thickness="3.28" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="116.5" endX="225" endY="113"><Stroke color="#FFFFFFFF" thickness="1.09" cap="BUTT"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="222" startY="239" endX="218" endY="135.4"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="218" startY="135.4" endX="225" endY="113"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="113" endX="232" endY="135.4"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="232" startY="135.4" endX="228" endY="239"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="228" startY="239" endX="222" endY="239"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218" startY="225" endX="232" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
         <Line startX="225" startY="209" endX="225" endY="206.61"><Stroke color="#FF0D0E0F" thickness="2.34" cap="BUTT"/></Line>
         <Line startX="225" startY="206.61" endX="225" endY="204.22"><Stroke color="#FF0D0E0F" thickness="2.55" cap="BUTT"/></Line>
         <Line startX="225" startY="204.22" endX="225" endY="201.83"><Stroke color="#FF0D0E0F" thickness="2.76" cap="BUTT"/></Line>
@@ -291,47 +454,47 @@
     <Group name="minuteHand" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
       <Transform target="angle" value="[MINUTE_SECOND] * 6"/>
       <PartDraw name="minuteHandShape" x="0" y="0" width="450" height="450">
-        <Line startX="225" startY="239" endX="225" endY="234"><Stroke color="#FFD5D9DD" thickness="6" cap="BUTT"/></Line>
-        <Line startX="225" startY="234" endX="225" endY="229"><Stroke color="#FFD5D9DD" thickness="6" cap="BUTT"/></Line>
-        <Line startX="225" startY="229" endX="225" endY="224"><Stroke color="#FFD5D9DD" thickness="6" cap="BUTT"/></Line>
-        <Line startX="225" startY="224" endX="225" endY="219"><Stroke color="#FFD5D9DD" thickness="6.18" cap="BUTT"/></Line>
-        <Line startX="225" startY="219" endX="225" endY="214"><Stroke color="#FFD5D9DD" thickness="6.45" cap="BUTT"/></Line>
-        <Line startX="225" startY="214" endX="225" endY="209"><Stroke color="#FFD5D9DD" thickness="6.71" cap="BUTT"/></Line>
-        <Line startX="225" startY="209" endX="225" endY="204"><Stroke color="#FFD5D9DD" thickness="6.98" cap="BUTT"/></Line>
-        <Line startX="225" startY="204" endX="225" endY="199"><Stroke color="#FFD5D9DD" thickness="7.24" cap="BUTT"/></Line>
-        <Line startX="225" startY="199" endX="225" endY="194"><Stroke color="#FFD5D9DD" thickness="7.5" cap="BUTT"/></Line>
-        <Line startX="225" startY="194" endX="225" endY="189"><Stroke color="#FFD5D9DD" thickness="7.77" cap="BUTT"/></Line>
-        <Line startX="225" startY="189" endX="225" endY="184"><Stroke color="#FFD5D9DD" thickness="8.03" cap="BUTT"/></Line>
-        <Line startX="225" startY="184" endX="225" endY="179"><Stroke color="#FFD5D9DD" thickness="8.29" cap="BUTT"/></Line>
-        <Line startX="225" startY="179" endX="225" endY="174"><Stroke color="#FFD5D9DD" thickness="8.56" cap="BUTT"/></Line>
-        <Line startX="225" startY="174" endX="225" endY="169"><Stroke color="#FFD5D9DD" thickness="8.82" cap="BUTT"/></Line>
-        <Line startX="225" startY="169" endX="225" endY="164"><Stroke color="#FFD5D9DD" thickness="9.08" cap="BUTT"/></Line>
-        <Line startX="225" startY="164" endX="225" endY="159"><Stroke color="#FFD5D9DD" thickness="9.35" cap="BUTT"/></Line>
-        <Line startX="225" startY="159" endX="225" endY="154"><Stroke color="#FFD5D9DD" thickness="9.61" cap="BUTT"/></Line>
-        <Line startX="225" startY="154" endX="225" endY="149"><Stroke color="#FFD5D9DD" thickness="9.87" cap="BUTT"/></Line>
-        <Line startX="225" startY="149" endX="225" endY="144"><Stroke color="#FFD5D9DD" thickness="10.14" cap="BUTT"/></Line>
-        <Line startX="225" startY="144" endX="225" endY="139"><Stroke color="#FFD5D9DD" thickness="10.4" cap="BUTT"/></Line>
-        <Line startX="225" startY="139" endX="225" endY="134"><Stroke color="#FFD5D9DD" thickness="10.66" cap="BUTT"/></Line>
-        <Line startX="225" startY="134" endX="225" endY="129"><Stroke color="#FFD5D9DD" thickness="10.93" cap="BUTT"/></Line>
-        <Line startX="225" startY="129" endX="225" endY="124"><Stroke color="#FFD5D9DD" thickness="11.19" cap="BUTT"/></Line>
-        <Line startX="225" startY="124" endX="225" endY="119"><Stroke color="#FFD5D9DD" thickness="11.46" cap="BUTT"/></Line>
-        <Line startX="225" startY="119" endX="225" endY="114"><Stroke color="#FFD5D9DD" thickness="11.72" cap="BUTT"/></Line>
-        <Line startX="225" startY="114" endX="225" endY="109"><Stroke color="#FFD5D9DD" thickness="11.98" cap="BUTT"/></Line>
-        <Line startX="225" startY="109" endX="225" endY="104"><Stroke color="#FFD5D9DD" thickness="12.25" cap="BUTT"/></Line>
-        <Line startX="225" startY="104" endX="225" endY="99"><Stroke color="#FFD5D9DD" thickness="12.51" cap="BUTT"/></Line>
-        <Line startX="225" startY="99" endX="225" endY="94"><Stroke color="#FFD5D9DD" thickness="12.77" cap="BUTT"/></Line>
-        <Line startX="225" startY="94" endX="225" endY="89"><Stroke color="#FFD5D9DD" thickness="12.73" cap="BUTT"/></Line>
-        <Line startX="225" startY="89" endX="225" endY="84"><Stroke color="#FFD5D9DD" thickness="10.77" cap="BUTT"/></Line>
-        <Line startX="225" startY="84" endX="225" endY="79"><Stroke color="#FFD5D9DD" thickness="8.81" cap="BUTT"/></Line>
-        <Line startX="225" startY="79" endX="225" endY="74"><Stroke color="#FFD5D9DD" thickness="6.85" cap="BUTT"/></Line>
-        <Line startX="225" startY="74" endX="225" endY="69"><Stroke color="#FFD5D9DD" thickness="4.89" cap="BUTT"/></Line>
-        <Line startX="225" startY="69" endX="225" endY="64"><Stroke color="#FFD5D9DD" thickness="2.94" cap="BUTT"/></Line>
-        <Line startX="225" startY="64" endX="225" endY="59"><Stroke color="#FFD5D9DD" thickness="0.98" cap="BUTT"/></Line>
-        <Line startX="222" startY="239" endX="218.5" endY="92.2"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
-        <Line startX="218.5" startY="92.2" endX="225" endY="59"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
-        <Line startX="225" startY="59" endX="231.5" endY="92.2"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
-        <Line startX="231.5" startY="92.2" endX="228" endY="239"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
-        <Line startX="228" startY="239" endX="222" endY="239"><Stroke color="#FFD5D9DD" thickness="1.6" cap="ROUND"/></Line>
+        <Line startX="225" startY="239" endX="225" endY="234"><Stroke color="#FFFFFFFF" thickness="6" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="234" endX="225" endY="229"><Stroke color="#FFFFFFFF" thickness="6" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="229" endX="225" endY="224"><Stroke color="#FFFFFFFF" thickness="6" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="224" endX="225" endY="219"><Stroke color="#FFFFFFFF" thickness="6.18" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="219" endX="225" endY="214"><Stroke color="#FFFFFFFF" thickness="6.45" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="214" endX="225" endY="209"><Stroke color="#FFFFFFFF" thickness="6.71" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="209" endX="225" endY="204"><Stroke color="#FFFFFFFF" thickness="6.98" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="204" endX="225" endY="199"><Stroke color="#FFFFFFFF" thickness="7.24" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="199" endX="225" endY="194"><Stroke color="#FFFFFFFF" thickness="7.5" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="194" endX="225" endY="189"><Stroke color="#FFFFFFFF" thickness="7.77" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="189" endX="225" endY="184"><Stroke color="#FFFFFFFF" thickness="8.03" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="184" endX="225" endY="179"><Stroke color="#FFFFFFFF" thickness="8.29" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="179" endX="225" endY="174"><Stroke color="#FFFFFFFF" thickness="8.56" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="174" endX="225" endY="169"><Stroke color="#FFFFFFFF" thickness="8.82" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="169" endX="225" endY="164"><Stroke color="#FFFFFFFF" thickness="9.08" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="164" endX="225" endY="159"><Stroke color="#FFFFFFFF" thickness="9.35" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="159" endX="225" endY="154"><Stroke color="#FFFFFFFF" thickness="9.61" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="154" endX="225" endY="149"><Stroke color="#FFFFFFFF" thickness="9.87" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="149" endX="225" endY="144"><Stroke color="#FFFFFFFF" thickness="10.14" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="144" endX="225" endY="139"><Stroke color="#FFFFFFFF" thickness="10.4" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="139" endX="225" endY="134"><Stroke color="#FFFFFFFF" thickness="10.66" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="134" endX="225" endY="129"><Stroke color="#FFFFFFFF" thickness="10.93" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="129" endX="225" endY="124"><Stroke color="#FFFFFFFF" thickness="11.19" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="124" endX="225" endY="119"><Stroke color="#FFFFFFFF" thickness="11.46" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="119" endX="225" endY="114"><Stroke color="#FFFFFFFF" thickness="11.72" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="114" endX="225" endY="109"><Stroke color="#FFFFFFFF" thickness="11.98" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="109" endX="225" endY="104"><Stroke color="#FFFFFFFF" thickness="12.25" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="104" endX="225" endY="99"><Stroke color="#FFFFFFFF" thickness="12.51" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="99" endX="225" endY="94"><Stroke color="#FFFFFFFF" thickness="12.77" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="94" endX="225" endY="89"><Stroke color="#FFFFFFFF" thickness="12.73" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="89" endX="225" endY="84"><Stroke color="#FFFFFFFF" thickness="10.77" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="84" endX="225" endY="79"><Stroke color="#FFFFFFFF" thickness="8.81" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="79" endX="225" endY="74"><Stroke color="#FFFFFFFF" thickness="6.85" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="74" endX="225" endY="69"><Stroke color="#FFFFFFFF" thickness="4.89" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="69" endX="225" endY="64"><Stroke color="#FFFFFFFF" thickness="2.94" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="64" endX="225" endY="59"><Stroke color="#FFFFFFFF" thickness="0.98" cap="BUTT"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="222" startY="239" endX="218.5" endY="92.2"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="218.5" startY="92.2" endX="225" endY="59"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="225" startY="59" endX="231.5" endY="92.2"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="231.5" startY="92.2" endX="228" endY="239"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
+        <Line startX="228" startY="239" endX="222" endY="239"><Stroke color="#FFFFFFFF" thickness="1.6" cap="ROUND"><LinearGradient startX="218.5" startY="225" endX="231.5" endY="225" colors="#FFF8FAFB #FFCDD2D7 #FF8A9198" positions="0 0.5 1"/></Stroke></Line>
         <Line startX="225" startY="209" endX="225" endY="205.11"><Stroke color="#FF0D0E0F" thickness="1.75" cap="BUTT"/></Line>
         <Line startX="225" startY="205.11" endX="225" endY="201.22"><Stroke color="#FF0D0E0F" thickness="1.95" cap="BUTT"/></Line>
         <Line startX="225" startY="201.22" endX="225" endY="197.33"><Stroke color="#FF0D0E0F" thickness="2.16" cap="BUTT"/></Line>

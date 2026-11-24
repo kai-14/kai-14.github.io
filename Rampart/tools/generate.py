@@ -10,6 +10,12 @@ Settings on the watch (long-press -> Customise):
   Dial    - dial colour
   Seconds - seconds hand colour
   Logo    - mark below 12: none, Anthropic or Claude
+  Tilt shine - the metal sheen turns as you tilt your wrist (uses the motion sensor)
+
+Metal look: a brushed texture image (tools/make_texture.py -> res/drawable-nodpi/metal_texture.png)
+over the dial colour, sweep-gradient sheens on the dial and ring, and bevel highlights on the
+teeth and hands. Gradients need an opaque Fill/Stroke colour: Android multiplies the gradient by
+the paint's alpha, so a transparent colour hides the gradient completely.
 
 Run from the Rampart/ directory:  python3 tools/generate.py
 """
@@ -37,11 +43,16 @@ HAND_CORE = "#FF0D0E0F"
 PRINT = "#FFB4B8BC"
 DIAL_GLOW = (["#38FFFFFF", "#0DFFFFFF", "#00000000", "#80000000"], [0, 0.4, 0.7, 1])
 
+R_EDGE = 225
 R_DIAL = 192                 # visible dial radius between the teeth
 TOOTH = (150, 222, 50)       # inner radius, outer radius, width
 R_NUM = 204                  # numerals in line with the minute ticks
 R_LUME = 166                 # lume bar on the inner part
 TICKS = (197, 212)
+LIGHT = (-0.6, -0.8)         # direction the light comes from (upper left)
+BEVEL = ["#8CFFFFFF", "#1FFFFFFF", "#00FFFFFF"]
+HAND_METAL = ["#FFF8FAFB", "#FFCDD2D7", "#FF8A9198"]
+TILT = ("clamp([ACCELEROMETER_ANGLE_X], -40, 40) * {a} + clamp([ACCELEROMETER_ANGLE_Y], -40, 40) * {b}")
 HOUR_HAND = (112, 14)        # length, max width
 MIN_HAND = (166, 13)
 SEC_HAND = (36, 186)         # tail, length
@@ -73,8 +84,52 @@ def scol(c, pick):
 #   rrect upright rounded rect centred on (C, C - r), rotated by deg about C
 #   text  cx cy size text color (static); or source= "day"/"date"
 # ---------------------------------------------------------------------------
-def line(x1, y1, x2, y2, w, color, cap="ROUND"):
-    return ("line", dict(x1=x1, y1=y1, x2=x2, y2=y2, w=w, color=color, cap=cap))
+def line(x1, y1, x2, y2, w, color, cap="ROUND", grad=None):
+    """grad: (sx, sy, ex, ey, colors, positions) - a linear gradient along the stroke, in local coords."""
+    return ("line", dict(x1=x1, y1=y1, x2=x2, y2=y2, w=w, color=color, cap=cap, grad=grad))
+
+
+def rot(x, y, deg, cx=C, cy=C):
+    a = math.radians(deg)
+    dx, dy = x - cx, y - cy
+    return cx + dx * math.cos(a) - dy * math.sin(a), cy + dx * math.sin(a) + dy * math.cos(a)
+
+
+def sheen(bright, dark, phase, n=24, power=1.0):
+    """Sweep-gradient stops for a bow-tie of light: bright at phase and phase+180 degrees."""
+    cols, pos = [], []
+    for i in range(n + 1):
+        b = math.cos(2 * math.radians(i * 360 / n - phase))
+        a = (abs(b) ** power) * (bright if b > 0 else dark)
+        cols.append(f"#{round(a * 255):02X}{'FFFFFF' if b > 0 else '000000'}")
+        pos.append(i / n)
+    return cols, pos
+
+
+DIAL_SHEEN = sheen(0.30, 0.22, 315)
+RING_SHEEN = sheen(0.20, 0.0, 300, power=2.0)
+
+
+def tooth_bevel(deg):
+    """Highlight along the inner end and sides of a tooth, lit from LIGHT whatever the tooth's angle."""
+    r0, _, tw = TOOTH
+    rad, x0, x1 = 11, C - tw / 2, C + tw / 2
+    yi, yo = C - r0, C - (R_DIAL + 6)
+    pts = [(x0, yo), (x0, yi - rad)]
+    for k in range(1, 5):                                   # inner-left corner
+        a = math.radians(90 * k / 4)
+        pts.append((x0 + rad - rad * math.cos(a), yi - rad + rad * math.sin(a)))
+    pts.append((x1 - rad, yi))
+    for k in range(1, 5):                                   # inner-right corner
+        a = math.radians(90 * k / 4)
+        pts.append((x1 - rad + rad * math.sin(a), yi - rad * (1 - math.cos(a))))
+    pts.append((x1, yo))
+    # Light direction in this tooth's local (unrotated) frame
+    lx, ly = rot(C + LIGHT[0], C + LIGHT[1], -deg)
+    lx, ly = lx - C, ly - C
+    tc = (C, C - (r0 + R_DIAL) / 2)
+    g = (tc[0] + lx * 34, tc[1] + ly * 34, tc[0] - lx * 34, tc[1] - ly * 34, BEVEL, [0, 0.45, 1])
+    return [line(a[0], a[1], b[0], b[1], 1.6, "#FFFFFFFF", grad=g) for a, b in zip(pts, pts[1:])]
 
 
 def teeth():
@@ -83,7 +138,8 @@ def teeth():
     r0, r1, tw = TOOTH
     for h in range(12):
         out.append([("rrect", dict(r=(r0 + r1) / 2, h=r1 - r0, w=tw, rad=11, deg=h * 30, fill=CASE, stroke=None, sw=0)),
-                    ("rrect", dict(r=R_LUME, h=9, w=21, rad=2, deg=h * 30, fill=LUME, stroke=None, sw=0))])
+                    ("rrect", dict(r=R_LUME, h=9, w=21, rad=2, deg=h * 30, fill=LUME, stroke=None, sw=0))]
+                   + tooth_bevel(h * 30))
     return out
 
 
@@ -114,14 +170,15 @@ def sword(length, wmax, color_body=SILVER, color_core=HAND_CORE, steps=36):
             return 6 + (wmax - 6) * max(d, 0) / shoulder
         return wmax * (length - d) / (length - shoulder)
 
+    g = (C - wmax / 2, C, C + wmax / 2, C, HAND_METAL, [0, 0.5, 1])
     items = []
     span = length + tail
     for i in range(steps):
         a, b = -tail + span * i / steps, -tail + span * (i + 1) / steps
-        items.append(line(C, C - a, C, C - b, width((a + b) / 2), color_body, "BUTT"))
+        items.append(line(C, C - a, C, C - b, width((a + b) / 2), "#FFFFFFFF", "BUTT", grad=g))
     pts = [(-3, -tail), (-wmax / 2, shoulder), (0, length), (wmax / 2, shoulder), (3, -tail)]
     for (xa, da), (xb, db) in zip(pts, pts[1:] + pts[:1]):
-        items.append(line(C + xa, C - da, C + xb, C - db, 1.6, color_body))
+        items.append(line(C + xa, C - da, C + xb, C - db, 1.6, "#FFFFFFFF", grad=g))
     core_end = length - 10
     for i in range(steps):
         a, b = neck + (core_end - neck) * i / steps, neck + (core_end - neck) * (i + 1) / steps
@@ -171,8 +228,13 @@ def date_window():
 # ---------------------------------------------------------------------------
 def wff_shape(kind, p, ind):
     if kind == "line":
+        g = p.get("grad")
+        inner = (f'<LinearGradient startX="{f(g[0])}" startY="{f(g[1])}" endX="{f(g[2])}" endY="{f(g[3])}" '
+                 f'colors="{" ".join(g[4])}" positions="{" ".join(f(v) for v in g[5])}"/>') if g else ""
+        stroke = (f'<Stroke color="{wcol(p["color"])}" thickness="{f(p["w"])}" cap="{p["cap"]}">{inner}</Stroke>' if g
+                  else f'<Stroke color="{wcol(p["color"])}" thickness="{f(p["w"])}" cap="{p["cap"]}"/>')
         return (f'{ind}<Line startX="{f(p["x1"])}" startY="{f(p["y1"])}" endX="{f(p["x2"])}" endY="{f(p["y2"])}">'
-                f'<Stroke color="{wcol(p["color"])}" thickness="{f(p["w"])}" cap="{p["cap"]}"/></Line>')
+                f'{stroke}</Line>')
     if kind == "dot":
         d = 2 * p["r"]
         return (f'{ind}<Ellipse x="{f(p["cx"] - p["r"])}" y="{f(p["cy"] - p["r"])}" width="{f(d)}" height="{f(d)}">'
@@ -212,6 +274,29 @@ def wff_text(p, ind, name):
             f"{ind}</PartText>"]
 
 
+def sweep(stops):
+    cols, pos = stops
+    return (f'<SweepGradient centerX="{f(C)}" centerY="{f(C)}" startAngle="0" endAngle="360" '
+            f'colors="{" ".join(cols)}" positions="{" ".join(f(v) for v in pos)}"/>')
+
+
+def wff_sheens(ind, tilt):
+    """Dial and ring sheens. With tilt on they turn a little, in opposite directions, as the wrist tilts."""
+    d, rm, rw = R_DIAL, (R_DIAL + R_EDGE) / 2, R_EDGE - R_DIAL
+    out = []
+    for name, shape, k in (
+            ("dialSheen", f'<Ellipse x="{f(C - d)}" y="{f(C - d)}" width="{2 * d}" height="{2 * d}">'
+                          f'<Fill color="#FFFFFFFF">{sweep(DIAL_SHEEN)}</Fill></Ellipse>', (0.6, 0.4)),
+            ("ringSheen", f'<Ellipse x="{f(C - rm)}" y="{f(C - rm)}" width="{f(2 * rm)}" height="{f(2 * rm)}">'
+                          f'<Stroke color="#FFFFFFFF" thickness="{f(rw)}">{sweep(RING_SHEEN)}</Stroke></Ellipse>', (-0.4, -0.3))):
+        out.append(f'{ind}<PartDraw name="{name}" x="0" y="0" width="{W}" height="{W}" pivotX="0.5" pivotY="0.5">')
+        if tilt:
+            out.append(f'{ind}  <Gyro angle="{TILT.format(a=k[0], b=k[1])}"/>')
+        out.append(f"{ind}  {shape}")
+        out.append(f"{ind}</PartDraw>")
+    return out
+
+
 def build_wff():
     L = ['<?xml version="1.0" encoding="utf-8"?>',
          "<!-- Generated by tools/generate.py - edit the generator, not this file. -->",
@@ -227,7 +312,9 @@ def build_wff():
     L += ["    </ColorConfiguration>",
           '    <ListConfiguration id="logo" displayName="@string/logo" defaultValue="none">']
     L += [f'      <ListOption id="{i}" displayName="@string/logo_{i}"/>' for i, _ in LOGOS]
-    L += ["    </ListConfiguration>", "  </UserConfigurations>", f'  <Scene backgroundColor="{CASE}">']
+    L += ["    </ListConfiguration>",
+          '    <BooleanConfiguration id="tilt" displayName="@string/tilt" defaultValue="TRUE"/>',
+          "  </UserConfigurations>", f'  <Scene backgroundColor="{CASE}">']
     ind = "    "
 
     # Dial: theme colour, literal light-to-shadow glow on top (hidden in ambient)
@@ -235,11 +322,25 @@ def build_wff():
     L.append(f'{ind}  <Variant mode="AMBIENT" target="alpha" value="0"/>')
     d = R_DIAL
     L.append(f'{ind}  <Ellipse x="{f(C - d)}" y="{f(C - d)}" width="{2 * d}" height="{2 * d}"><Fill color="{wcol(DIAL)}"/></Ellipse>')
-    L.append(f'{ind}  <Ellipse x="{f(C - d)}" y="{f(C - d)}" width="{2 * d}" height="{2 * d}"><Fill color="#00000000">'
+    L.append(f'{ind}  <Ellipse x="{f(C - d)}" y="{f(C - d)}" width="{2 * d}" height="{2 * d}"><Fill color="#FFFFFFFF">'
              f'<RadialGradient centerX="{f(C - 45)}" centerY="{f(C - 70)}" radius="{2 * d}" colors="{" ".join(DIAL_GLOW[0])}" '
              f'positions="{" ".join(f(v) for v in DIAL_GLOW[1])}"/></Fill></Ellipse>')
     L.append(f'{ind}  <Ellipse x="{f(C - d)}" y="{f(C - d)}" width="{2 * d}" height="{2 * d}"><Stroke color="#FF000000" thickness="3"/></Ellipse>')
     L.append(f"{ind}</PartDraw>")
+
+    L.append(f'{ind}<PartImage name="metal" x="0" y="0" width="{W}" height="{W}">')
+    L.append(f'{ind}  <Variant mode="AMBIENT" target="alpha" value="0"/>')
+    L.append(f'{ind}  <Image resource="metal_texture"/>')
+    L.append(f"{ind}</PartImage>")
+    L.append(f'{ind}<BooleanConfiguration id="tilt">')
+    for opt in ("TRUE", "FALSE"):
+        L.append(f'{ind}  <BooleanOption id="{opt}">')
+        L.append(f'{ind}    <Group name="sheen{opt.title()}" x="0" y="0" width="{W}" height="{W}">')
+        L.append(f'{ind}      <Variant mode="AMBIENT" target="alpha" value="0"/>')
+        L += wff_sheens(ind + "      ", opt == "TRUE")
+        L.append(f"{ind}    </Group>")
+        L.append(f"{ind}  </BooleanOption>")
+    L.append(f"{ind}</BooleanConfiguration>")
 
     L.append(f'{ind}<Group name="print" x="0" y="0" width="{W}" height="{W}">')
     L.append(f'{ind}  <Variant mode="AMBIENT" target="alpha" value="0"/>')
@@ -305,11 +406,27 @@ def seconds_items():
 # ---------------------------------------------------------------------------
 # SVG preview renderer (same geometry)
 # ---------------------------------------------------------------------------
+_gid = [0]
+
+
+def svg_lingrad(g):
+    _gid[0] += 1
+    gid = f"lg{_gid[0]}"
+    stops = "".join(f'<stop offset="{f(pos)}" stop-color="#{c[3:]}" stop-opacity="{int(c[1:3], 16) / 255:.3f}"/>'
+                    for c, pos in zip(g[4], g[5]))
+    return gid, (f'<linearGradient id="{gid}" gradientUnits="userSpaceOnUse" x1="{f(g[0])}" y1="{f(g[1])}" '
+                 f'x2="{f(g[2])}" y2="{f(g[3])}">{stops}</linearGradient>')
+
+
 def svg_items(items, pick, extra=""):
     o = []
     for kind, p in items:
         if kind == "line":
             col, op = scol(p["color"], pick)
+            if p.get("grad"):
+                gid, defs = svg_lingrad(p["grad"])
+                o.append(f"<defs>{defs}</defs>")
+                col, op = f"url(#{gid})", "1"
             o.append(f'<line x1="{f(p["x1"])}" y1="{f(p["y1"])}" x2="{f(p["x2"])}" y2="{f(p["y2"])}" stroke="{col}" '
                      f'stroke-opacity="{op}" stroke-width="{f(p["w"])}" stroke-linecap="{p["cap"].lower()}"/>')
         elif kind == "dot":
@@ -333,6 +450,26 @@ def svg_items(items, pick, extra=""):
     return o
 
 
+def css_conic(stops):
+    parts = []
+    for c, pos in zip(*stops):
+        a = int(c[1:3], 16) / 255
+        rgb = "255,255,255" if c[3:] == "FFFFFF" else "0,0,0"
+        parts.append(f"rgba({rgb},{a:.3f}) {pos * 360:.1f}deg")
+    return f"conic-gradient(from 0deg, {', '.join(parts)})"
+
+
+def svg_sheens():
+    """The sweep gradients, drawn with CSS conic gradients (SVG has none). Shown untilted."""
+    d, rw = R_DIAL, R_EDGE - R_DIAL
+    return [f'<foreignObject x="0" y="0" width="{W}" height="{W}"><div xmlns="http://www.w3.org/1999/xhtml" '
+            f'style="position:absolute;left:{C - R_EDGE}px;top:{C - R_EDGE}px;width:{2 * R_EDGE}px;height:{2 * R_EDGE}px;'
+            f'border-radius:50%;background:{css_conic(RING_SHEEN)};'
+            f'-webkit-mask:radial-gradient(circle, transparent {d}px, #000 {d}px)"></div>'
+            f'<div xmlns="http://www.w3.org/1999/xhtml" style="position:absolute;left:{C - d}px;top:{C - d}px;'
+            f'width:{2 * d}px;height:{2 * d}px;border-radius:50%;background:{css_conic(DIAL_SHEEN)}"></div></foreignObject>']
+
+
 def build_svg(pick, logo, hh=10, mm=10, ss=32):
     minute = mm + ss / 60
     m_ang, h_ang, s_ang = minute * 6, ((hh % 12) + minute / 60) * 30, ss * 6
@@ -344,11 +481,16 @@ def build_svg(pick, logo, hh=10, mm=10, ss=32):
          f'<clipPath id="c"><circle cx="{C}" cy="{C}" r="{C}"/></clipPath></defs>',
          f'<g clip-path="url(#c)"><rect width="{W}" height="{W}" fill="#{CASE[3:]}"/>',
          f'<circle cx="{C}" cy="{C}" r="{R_DIAL}" fill="{dc}"/>',
-         f'<circle cx="{C}" cy="{C}" r="{R_DIAL}" fill="url(#g)" stroke="#000" stroke-width="3"/>']
+         f'<circle cx="{C}" cy="{C}" r="{R_DIAL}" fill="url(#g)" stroke="#000" stroke-width="3"/>',
+         f'<image href="../app/src/main/res/drawable-nodpi/metal_texture.png" x="0" y="0" width="{W}" height="{W}"/>']
+    o += svg_sheens()
     o += svg_items(dial_print(), pick)
     o += svg_items(logo_mark(logo, C, C - 84, SILVER), pick)
-    for items in teeth():
-        o += svg_items(items, pick)
+    for h, items in enumerate(teeth()):
+        # Draw each tooth upright and rotate the group, as the watch does (bevel lines are in local coords).
+        o.append(f'<g transform="rotate({h * 30} {C} {C})">')
+        o += svg_items([(k, dict(p, deg=0)) if k == "rrect" else (k, p) for k, p in items], pick)
+        o.append("</g>")
     o += svg_items(minute_ticks(), pick)
     o += svg_items(numerals(), pick)
     o += svg_items(date_window(), pick)
@@ -369,7 +511,8 @@ def build_strings():
          '    <string name="app_name">Rampart</string>',
          '    <string name="dial_color">Dial</string>',
          '    <string name="accent_color">Seconds</string>',
-         '    <string name="logo">Logo</string>']
+         '    <string name="logo">Logo</string>',
+         '    <string name="tilt">Tilt shine</string>']
     s += [f'    <string name="dial_{i}">{n}</string>' for i, n, _ in DIALS]
     s += [f'    <string name="accent_{i}">{n}</string>' for i, n, _ in ACCENTS]
     s += [f'    <string name="logo_{i}">{n}</string>' for i, n in LOGOS]
