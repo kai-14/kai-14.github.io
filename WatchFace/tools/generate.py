@@ -112,13 +112,23 @@ def track_marks():
     return items
 
 
+def logo_mark(cx, cy, h=14, w=2.4):
+    """Anthropic "A\\" mark drawn with lines, centred on (cx, cy), h tall."""
+    k = h / 13
+    segs = [((-2.5, -6.5), (-8, 6.5)),      # A left leg
+            ((-2.5, -6.5), (3, 6.5)),       # A right leg
+            ((-6.1, 2), (1.1, 2)),          # A crossbar
+            ((2.5, -6.5), (8, 6.5))]        # backslash, parallel to the right leg
+    return [("line", dict(x1=cx + a[0] * k, y1=cy + a[1] * k, x2=cx + b[0] * k, y2=cy + b[1] * k, w=w, color=MARK))
+            for a, b in segs]
+
+
 def subdial_marks(c):
     items = []
     for h in range(12):
         deg = h * 30
         if h == 0:
-            x, y = polar(c, c, 85, 0)
-            items.append(("dot", dict(cx=x, cy=y, r=3.6, color=MARK)))
+            items += logo_mark(c, c - 85)
         elif h in (3, 6, 9):
             items.append(("pill", dict(cx=c, cy=c, r=85, deg=deg, length=16, width=7, stroke=2)))
         else:

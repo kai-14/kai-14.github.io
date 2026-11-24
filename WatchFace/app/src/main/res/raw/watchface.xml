@@ -124,7 +124,10 @@
         <Group name="subdialMarks" x="0" y="0" width="200" height="200">
           <Variant mode="AMBIENT" target="alpha" value="110"/>
           <PartDraw name="subdialMarks" x="0" y="0" width="200" height="200">
-            <Ellipse x="96.4" y="11.4" width="7.2" height="7.2"><Fill color="#F5FFFFFF"/></Ellipse>
+            <Line startX="97.31" startY="8" endX="91.38" endY="22"><Stroke color="#F5FFFFFF" thickness="2.4" cap="ROUND"/></Line>
+            <Line startX="97.31" startY="8" endX="103.23" endY="22"><Stroke color="#F5FFFFFF" thickness="2.4" cap="ROUND"/></Line>
+            <Line startX="93.43" startY="17.15" endX="101.18" endY="17.15"><Stroke color="#F5FFFFFF" thickness="2.4" cap="ROUND"/></Line>
+            <Line startX="102.69" startY="8" endX="108.62" endY="22"><Stroke color="#F5FFFFFF" thickness="2.4" cap="ROUND"/></Line>
             <Line startX="139.5" startY="31.58" endX="145.5" endY="21.19"><Stroke color="#F5FFFFFF" thickness="3" cap="ROUND"/></Line>
             <Line startX="168.42" startY="60.5" endX="178.81" endY="54.5"><Stroke color="#F5FFFFFF" thickness="3" cap="ROUND"/></Line>
             <Line startX="168.42" startY="139.5" endX="178.81" endY="145.5"><Stroke color="#F5FFFFFF" thickness="3" cap="ROUND"/></Line>

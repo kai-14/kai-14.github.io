@@ -94,7 +94,10 @@
 <circle cx="100" cy="100" r="99" fill="#000" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.25" stroke-width="1.2"/>
 <circle cx="100" cy="100" r="70" fill="#6A7176"/>
 <circle cx="100" cy="100" r="70" fill="url(#s-graphite)" stroke="#fff" stroke-opacity="0.25" stroke-width="1.2"/>
-<circle cx="100" cy="15" r="3.6" fill="#FFFFFF" fill-opacity="0.961"/>
+<line x1="97.31" y1="8" x2="91.38" y2="22" stroke="#FFFFFF" stroke-opacity="0.961" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="97.31" y1="8" x2="103.23" y2="22" stroke="#FFFFFF" stroke-opacity="0.961" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="93.43" y1="17.15" x2="101.18" y2="17.15" stroke="#FFFFFF" stroke-opacity="0.961" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="102.69" y1="8" x2="108.62" y2="22" stroke="#FFFFFF" stroke-opacity="0.961" stroke-width="2.4" stroke-linecap="round"/>
 <line x1="139.5" y1="31.58" x2="145.5" y2="21.19" stroke="#FFFFFF" stroke-opacity="0.961" stroke-width="3" stroke-linecap="round"/>
 <line x1="168.42" y1="60.5" x2="178.81" y2="54.5" stroke="#FFFFFF" stroke-opacity="0.961" stroke-width="3" stroke-linecap="round"/>
 <rect x="96.5" y="7" width="7" height="16" rx="3.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.961" stroke-width="2" transform="rotate(90 100 100)"/>
