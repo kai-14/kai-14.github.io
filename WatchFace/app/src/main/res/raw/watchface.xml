@@ -15,7 +15,8 @@
   <Scene backgroundColor="#FF000000">
     <PartDraw name="dial" x="0" y="0" width="450" height="450">
       <Variant mode="AMBIENT" target="alpha" value="0"/>
-      <Ellipse x="0" y="0" width="450" height="450"><Fill color="[CONFIGURATION.dial.1]"><RadialGradient centerX="185" centerY="165" radius="320" colors="[CONFIGURATION.dial.0] [CONFIGURATION.dial.1] [CONFIGURATION.dial.2]" positions="0 0.55 1"/></Fill></Ellipse>
+      <Ellipse x="0" y="0" width="450" height="450"><Fill color="[CONFIGURATION.dial.1]"/></Ellipse>
+      <Ellipse x="0" y="0" width="450" height="450"><Fill color="#00000000"><RadialGradient centerX="185" centerY="165" radius="320" colors="#66FFFFFF #14FFFFFF #00000000 #59000000" positions="0 0.35 0.6 1"/></Fill></Ellipse>
       <Ellipse x="11" y="11" width="428" height="428"><Stroke color="#40FFFFFF" thickness="1.2"/></Ellipse>
       <Ellipse x="39" y="39" width="372" height="372"><Stroke color="#40FFFFFF" thickness="1.2"/></Ellipse>
     </PartDraw>
@@ -93,14 +94,32 @@
     <Group name="disc" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
       <Transform target="angle" value="[MINUTE_SECOND] * 6"/>
       <PartDraw name="minuteHand" x="0" y="0" width="450" height="450">
-        <Line startX="225" startY="183" endX="225" endY="49"><Stroke color="#F5FFFFFF" thickness="7" cap="ROUND"/></Line>
+        <Line startX="225" startY="183" endX="225" endY="175.56"><Stroke color="#FFFFFFFF" thickness="7.84" cap="ROUND"/></Line>
+        <Line startX="225" startY="175.56" endX="225" endY="168.11"><Stroke color="#FFFFFFFF" thickness="7.53" cap="ROUND"/></Line>
+        <Line startX="225" startY="168.11" endX="225" endY="160.67"><Stroke color="#FFFFFFFF" thickness="7.22" cap="ROUND"/></Line>
+        <Line startX="225" startY="160.67" endX="225" endY="153.22"><Stroke color="#FFFFFFFF" thickness="6.91" cap="ROUND"/></Line>
+        <Line startX="225" startY="153.22" endX="225" endY="145.78"><Stroke color="#FFFFFFFF" thickness="6.6" cap="ROUND"/></Line>
+        <Line startX="225" startY="145.78" endX="225" endY="138.33"><Stroke color="#FFFFFFFF" thickness="6.29" cap="ROUND"/></Line>
+        <Line startX="225" startY="138.33" endX="225" endY="130.89"><Stroke color="#FFFFFFFF" thickness="5.98" cap="ROUND"/></Line>
+        <Line startX="225" startY="130.89" endX="225" endY="123.44"><Stroke color="#FFFFFFFF" thickness="5.67" cap="ROUND"/></Line>
+        <Line startX="225" startY="123.44" endX="225" endY="116"><Stroke color="#FFFFFFFF" thickness="5.36" cap="ROUND"/></Line>
+        <Line startX="225" startY="116" endX="225" endY="108.56"><Stroke color="#FFFFFFFF" thickness="5.04" cap="ROUND"/></Line>
+        <Line startX="225" startY="108.56" endX="225" endY="101.11"><Stroke color="#FFFFFFFF" thickness="4.73" cap="ROUND"/></Line>
+        <Line startX="225" startY="101.11" endX="225" endY="93.67"><Stroke color="#FFFFFFFF" thickness="4.42" cap="ROUND"/></Line>
+        <Line startX="225" startY="93.67" endX="225" endY="86.22"><Stroke color="#FFFFFFFF" thickness="4.11" cap="ROUND"/></Line>
+        <Line startX="225" startY="86.22" endX="225" endY="78.78"><Stroke color="#FFFFFFFF" thickness="3.8" cap="ROUND"/></Line>
+        <Line startX="225" startY="78.78" endX="225" endY="71.33"><Stroke color="#FFFFFFFF" thickness="3.49" cap="ROUND"/></Line>
+        <Line startX="225" startY="71.33" endX="225" endY="63.89"><Stroke color="#FFFFFFFF" thickness="3.18" cap="ROUND"/></Line>
+        <Line startX="225" startY="63.89" endX="225" endY="56.44"><Stroke color="#FFFFFFFF" thickness="2.87" cap="ROUND"/></Line>
+        <Line startX="225" startY="56.44" endX="225" endY="49"><Stroke color="#FFFFFFFF" thickness="2.56" cap="ROUND"/></Line>
       </PartDraw>
       <Group name="subdial" x="125" y="195" width="200" height="200" pivotX="0.5" pivotY="0.5">
         <Transform target="angle" value="0 - [MINUTE_SECOND] * 6"/>
         <PartDraw name="subdialFace" x="0" y="0" width="200" height="200">
           <Variant mode="AMBIENT" target="alpha" value="0"/>
           <Ellipse x="1" y="1" width="198" height="198"><Fill color="#14000000"/><Stroke color="#40FFFFFF" thickness="1.2"/></Ellipse>
-          <Ellipse x="30" y="30" width="140" height="140"><Fill color="[CONFIGURATION.dial.3]"><RadialGradient centerX="75" centerY="70" radius="140" colors="[CONFIGURATION.dial.3] [CONFIGURATION.dial.1]" positions="0 1"/></Fill><Stroke color="#40FFFFFF" thickness="1.2"/></Ellipse>
+          <Ellipse x="30" y="30" width="140" height="140"><Fill color="[CONFIGURATION.dial.3]"/></Ellipse>
+          <Ellipse x="30" y="30" width="140" height="140"><Fill color="#00000000"><RadialGradient centerX="75" centerY="70" radius="140" colors="#40FFFFFF #00FFFFFF #26000000" positions="0 0.55 1"/></Fill><Stroke color="#40FFFFFF" thickness="1.2"/></Ellipse>
         </PartDraw>
         <Group name="subdialMarks" x="0" y="0" width="200" height="200">
           <Variant mode="AMBIENT" target="alpha" value="110"/>
@@ -127,7 +146,24 @@
         </Group>
         <PartDraw name="hourHand" x="0" y="0" width="200" height="200" pivotX="0.5" pivotY="0.5">
           <Transform target="angle" value="[HOUR_0_11_MINUTE] * 30"/>
-          <Line startX="100" startY="100" endX="100" endY="42"><Stroke color="#F5FFFFFF" thickness="7" cap="ROUND"/></Line>
+          <Line startX="100" startY="100" endX="100" endY="96.78"><Stroke color="#FFFFFFFF" thickness="7.84" cap="ROUND"/></Line>
+          <Line startX="100" startY="96.78" endX="100" endY="93.56"><Stroke color="#FFFFFFFF" thickness="7.53" cap="ROUND"/></Line>
+          <Line startX="100" startY="93.56" endX="100" endY="90.33"><Stroke color="#FFFFFFFF" thickness="7.22" cap="ROUND"/></Line>
+          <Line startX="100" startY="90.33" endX="100" endY="87.11"><Stroke color="#FFFFFFFF" thickness="6.91" cap="ROUND"/></Line>
+          <Line startX="100" startY="87.11" endX="100" endY="83.89"><Stroke color="#FFFFFFFF" thickness="6.6" cap="ROUND"/></Line>
+          <Line startX="100" startY="83.89" endX="100" endY="80.67"><Stroke color="#FFFFFFFF" thickness="6.29" cap="ROUND"/></Line>
+          <Line startX="100" startY="80.67" endX="100" endY="77.44"><Stroke color="#FFFFFFFF" thickness="5.98" cap="ROUND"/></Line>
+          <Line startX="100" startY="77.44" endX="100" endY="74.22"><Stroke color="#FFFFFFFF" thickness="5.67" cap="ROUND"/></Line>
+          <Line startX="100" startY="74.22" endX="100" endY="71"><Stroke color="#FFFFFFFF" thickness="5.36" cap="ROUND"/></Line>
+          <Line startX="100" startY="71" endX="100" endY="67.78"><Stroke color="#FFFFFFFF" thickness="5.04" cap="ROUND"/></Line>
+          <Line startX="100" startY="67.78" endX="100" endY="64.56"><Stroke color="#FFFFFFFF" thickness="4.73" cap="ROUND"/></Line>
+          <Line startX="100" startY="64.56" endX="100" endY="61.33"><Stroke color="#FFFFFFFF" thickness="4.42" cap="ROUND"/></Line>
+          <Line startX="100" startY="61.33" endX="100" endY="58.11"><Stroke color="#FFFFFFFF" thickness="4.11" cap="ROUND"/></Line>
+          <Line startX="100" startY="58.11" endX="100" endY="54.89"><Stroke color="#FFFFFFFF" thickness="3.8" cap="ROUND"/></Line>
+          <Line startX="100" startY="54.89" endX="100" endY="51.67"><Stroke color="#FFFFFFFF" thickness="3.49" cap="ROUND"/></Line>
+          <Line startX="100" startY="51.67" endX="100" endY="48.44"><Stroke color="#FFFFFFFF" thickness="3.18" cap="ROUND"/></Line>
+          <Line startX="100" startY="48.44" endX="100" endY="45.22"><Stroke color="#FFFFFFFF" thickness="2.87" cap="ROUND"/></Line>
+          <Line startX="100" startY="45.22" endX="100" endY="42"><Stroke color="#FFFFFFFF" thickness="2.56" cap="ROUND"/></Line>
         </PartDraw>
       </Group>
     </Group>

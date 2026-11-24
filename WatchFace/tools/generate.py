@@ -36,6 +36,15 @@ SUB_R = 100               # sub-dial outer radius
 SUB_DISC_R = 70           # sub-dial inner disc radius
 MIN_HAND = (42, 176)      # start/end radius of the minute hand
 HOUR_HAND_LEN = 58
+HAND = "#FFFFFFFF"        # opaque, so overlapping taper segments don't show seams
+HAND_W = (8, 2.4)         # hand width at the base and at the tip
+TAPER_STEPS = 18
+
+# Glow overlays. Literal colours only: the watch does not resolve
+# [CONFIGURATION] references inside gradients, so the dial is a solid theme
+# colour with a fixed light-to-shadow alpha gradient on top.
+DIAL_GLOW = (["#66FFFFFF", "#14FFFFFF", "#00000000", "#59000000"], [0, 0.35, 0.6, 1])
+SUB_GLOW = (["#40FFFFFF", "#00FFFFFF", "#26000000"], [0, 0.55, 1])
 
 
 def f(v):
@@ -45,6 +54,39 @@ def f(v):
 def polar(cx, cy, r, deg):
     a = math.radians(deg)
     return cx + r * math.sin(a), cy - r * math.cos(a)
+
+
+def taper(x, y0, y1):
+    """Segments along a vertical hand from y0 (base) to y1 (tip), narrowing toward the tip."""
+    segs = []
+    for i in range(TAPER_STEPS):
+        a, b = i / TAPER_STEPS, (i + 1) / TAPER_STEPS
+        w = HAND_W[0] + (HAND_W[1] - HAND_W[0]) * (a + b) / 2
+        segs.append((y0 + (y1 - y0) * a, y0 + (y1 - y0) * b, w))
+    return segs
+
+
+def wff_hand(x, y0, y1, ind):
+    return [f'{ind}<Line startX="{f(x)}" startY="{f(a)}" endX="{f(x)}" endY="{f(b)}">'
+            f'<Stroke color="{HAND}" thickness="{f(w)}" cap="ROUND"/></Line>' for a, b, w in taper(x, y0, y1)]
+
+
+def svg_hand(x, y0, y1, extra=""):
+    return [f'<g{extra}>'] + [f'<line x1="{f(x)}" y1="{f(a)}" x2="{f(x)}" y2="{f(b)}" stroke="#fff" '
+                              f'stroke-width="{f(w)}" stroke-linecap="round"/>' for a, b, w in taper(x, y0, y1)] + ["</g>"]
+
+
+def wff_glow(glow):
+    cols, pos = glow
+    return f'colors="{" ".join(cols)}" positions="{" ".join(f(v) for v in pos)}"'
+
+
+def svg_stops(glow):
+    out = []
+    for c, pos in zip(*glow):
+        col, op = argb_to_css(c)
+        out.append(f'<stop offset="{f(pos)}" stop-color="{col}" stop-opacity="{op}"/>')
+    return "".join(out)
 
 
 # ---------------------------------------------------------------------------
@@ -137,8 +179,9 @@ def build_wff():
     # Dial: lit from the upper left, darker at the rim
     L.append(f'    <PartDraw name="dial" x="0" y="0" width="{W}" height="{W}">')
     L.append(f'      <Variant mode="AMBIENT" target="alpha" value="0"/>')
-    L.append(f'      <Ellipse x="0" y="0" width="{W}" height="{W}"><Fill color="{cfg(1)}">'
-             f'<RadialGradient centerX="185" centerY="165" radius="320" colors="{cfg(0)} {cfg(1)} {cfg(2)}" positions="0 0.55 1"/>'
+    L.append(f'      <Ellipse x="0" y="0" width="{W}" height="{W}"><Fill color="{cfg(1)}"/></Ellipse>')
+    L.append(f'      <Ellipse x="0" y="0" width="{W}" height="{W}"><Fill color="#00000000">'
+             f'<RadialGradient centerX="185" centerY="165" radius="320" {wff_glow(DIAL_GLOW)}/>'
              f"</Fill></Ellipse>")
     L.append(f'      <Ellipse x="{f(C - R_OUTER_RING)}" y="{f(C - R_OUTER_RING)}" width="{2 * R_OUTER_RING}" height="{2 * R_OUTER_RING}">'
              f'<Stroke color="{RING}" thickness="1.2"/></Ellipse>')
@@ -158,8 +201,7 @@ def build_wff():
 
     # Minute hand
     L.append(f'      <PartDraw name="minuteHand" x="0" y="0" width="{W}" height="{W}">')
-    L.append(f'        <Line startX="{f(C)}" startY="{f(C - MIN_HAND[0])}" endX="{f(C)}" endY="{f(C - MIN_HAND[1])}">'
-             f'<Stroke color="{MARK}" thickness="7" cap="ROUND"/></Line>')
+    L += wff_hand(C, C - MIN_HAND[0], C - MIN_HAND[1], "        ")
     L.append("      </PartDraw>")
 
     # Hour sub-dial, opposite the minute hand; counter-rotates to stay upright
@@ -171,8 +213,9 @@ def build_wff():
     L.append('          <Variant mode="AMBIENT" target="alpha" value="0"/>')
     L.append(f'          <Ellipse x="1" y="1" width="{S - 2}" height="{S - 2}"><Fill color="#14000000"/><Stroke color="{RING}" thickness="1.2"/></Ellipse>')
     d = SUB_DISC_R
-    L.append(f'          <Ellipse x="{sc - d}" y="{sc - d}" width="{2 * d}" height="{2 * d}"><Fill color="{cfg(3)}">'
-             f'<RadialGradient centerX="{sc - 25}" centerY="{sc - 30}" radius="{2 * d}" colors="{cfg(3)} {cfg(1)}" positions="0 1"/>'
+    L.append(f'          <Ellipse x="{sc - d}" y="{sc - d}" width="{2 * d}" height="{2 * d}"><Fill color="{cfg(3)}"/></Ellipse>')
+    L.append(f'          <Ellipse x="{sc - d}" y="{sc - d}" width="{2 * d}" height="{2 * d}"><Fill color="#00000000">'
+             f'<RadialGradient centerX="{sc - 25}" centerY="{sc - 30}" radius="{2 * d}" {wff_glow(SUB_GLOW)}/>'
              f'</Fill><Stroke color="{RING}" thickness="1.2"/></Ellipse>')
     L.append("        </PartDraw>")
     L.append(f'        <Group name="subdialMarks" x="0" y="0" width="{S}" height="{S}">')
@@ -181,8 +224,7 @@ def build_wff():
     L.append("        </Group>")
     L.append(f'        <PartDraw name="hourHand" x="0" y="0" width="{S}" height="{S}" pivotX="0.5" pivotY="0.5">')
     L.append('          <Transform target="angle" value="[HOUR_0_11_MINUTE] * 30"/>')
-    L.append(f'          <Line startX="{sc}" startY="{sc}" endX="{sc}" endY="{sc - HOUR_HAND_LEN}">'
-             f'<Stroke color="{MARK}" thickness="7" cap="ROUND"/></Line>')
+    L += wff_hand(sc, sc, sc - HOUR_HAND_LEN, "          ")
     L.append("        </PartDraw>")
     L.append("      </Group>")
     L.append("    </Group>")
@@ -227,25 +269,24 @@ def build_svg(theme, hh=10, mm=10, ss=0):
     col, op = argb_to_css(MARK)
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {W}" width="{W}" height="{W}">',
          "<defs>",
-         f'<radialGradient id="g-{theme[0]}" gradientUnits="userSpaceOnUse" cx="185" cy="165" r="320">'
-         f'<stop offset="0" stop-color="{cols[0]}"/><stop offset="0.55" stop-color="{cols[1]}"/><stop offset="1" stop-color="{cols[2]}"/></radialGradient>',
-         f'<radialGradient id="s-{theme[0]}" gradientUnits="userSpaceOnUse" cx="{SUB_R - 25}" cy="{SUB_R - 30}" r="{2 * SUB_DISC_R}">'
-         f'<stop offset="0" stop-color="{cols[3]}"/><stop offset="1" stop-color="{cols[1]}"/></radialGradient>',
+         f'<radialGradient id="g-{theme[0]}" gradientUnits="userSpaceOnUse" cx="185" cy="165" r="320">{svg_stops(DIAL_GLOW)}</radialGradient>',
+         f'<radialGradient id="s-{theme[0]}" gradientUnits="userSpaceOnUse" cx="{SUB_R - 25}" cy="{SUB_R - 30}" r="{2 * SUB_DISC_R}">{svg_stops(SUB_GLOW)}</radialGradient>',
          f'<clipPath id="c-{theme[0]}"><circle cx="{C}" cy="{C}" r="{C}"/></clipPath>',
          "</defs>",
          f'<g clip-path="url(#c-{theme[0]})"><rect width="{W}" height="{W}" fill="#000"/>',
+         f'<circle cx="{C}" cy="{C}" r="{C}" fill="{cols[1]}"/>',
          f'<circle cx="{C}" cy="{C}" r="{C}" fill="url(#g-{theme[0]})"/>',
          f'<circle cx="{C}" cy="{C}" r="{R_OUTER_RING}" fill="none" stroke="#fff" stroke-opacity="0.25" stroke-width="1.2"/>',
          f'<circle cx="{C}" cy="{C}" r="{R_TRACK_IN}" fill="none" stroke="#fff" stroke-opacity="0.25" stroke-width="1.2"/>']
     o += svg_items(track_marks())
     o.append(f'<g transform="rotate({f(m_ang)} {C} {C})">')
-    o.append(f'<line x1="{C}" y1="{C - MIN_HAND[0]}" x2="{C}" y2="{C - MIN_HAND[1]}" stroke="{col}" stroke-opacity="{op}" stroke-width="7" stroke-linecap="round"/>')
+    o += svg_hand(C, C - MIN_HAND[0], C - MIN_HAND[1])
     o.append(f'<g transform="translate({f(C - SUB_R)} {f(C + SUB_OFFSET - SUB_R)}) rotate({f(-m_ang)} {SUB_R} {SUB_R})">')
     o.append(f'<circle cx="{SUB_R}" cy="{SUB_R}" r="{SUB_R - 1}" fill="#000" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.25" stroke-width="1.2"/>')
+    o.append(f'<circle cx="{SUB_R}" cy="{SUB_R}" r="{SUB_DISC_R}" fill="{cols[3]}"/>')
     o.append(f'<circle cx="{SUB_R}" cy="{SUB_R}" r="{SUB_DISC_R}" fill="url(#s-{theme[0]})" stroke="#fff" stroke-opacity="0.25" stroke-width="1.2"/>')
     o += svg_items(subdial_marks(SUB_R))
-    o.append(f'<line x1="{SUB_R}" y1="{SUB_R}" x2="{SUB_R}" y2="{SUB_R - HOUR_HAND_LEN}" stroke="{col}" stroke-opacity="{op}" '
-             f'stroke-width="7" stroke-linecap="round" transform="rotate({f(h_ang)} {SUB_R} {SUB_R})"/>')
+    o += svg_hand(SUB_R, SUB_R, SUB_R - HOUR_HAND_LEN, f' transform="rotate({f(h_ang)} {SUB_R} {SUB_R})"')
     o.append("</g></g></g></svg>")
     return "\n".join(o)
 
