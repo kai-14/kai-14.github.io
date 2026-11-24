@@ -77,52 +77,52 @@
     </Group>
     <Group name="teeth" x="0" y="0" width="450" height="450">
       <PartDraw name="tooth0" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="0">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth1" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="30">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth2" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="60">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth3" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="90">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth4" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="120">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth5" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="150">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth6" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="180">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth7" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="210">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth8" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="240">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth9" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="270">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth10" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="300">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
       <PartDraw name="tooth11" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" angle="330">
-        <RoundRectangle x="200" y="21" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
-        <RoundRectangle x="214.5" y="71.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
+        <RoundRectangle x="200" y="3" width="50" height="72" cornerRadiusX="11" cornerRadiusY="11"><Fill color="#FF0C0D0E"/></RoundRectangle>
+        <RoundRectangle x="214.5" y="54.5" width="21" height="9" cornerRadiusX="2" cornerRadiusY="2"><Fill color="#FFCFD6C8"/></RoundRectangle>
       </PartDraw>
     </Group>
     <Group name="ticks" x="0" y="0" width="450" height="450">
@@ -156,53 +156,53 @@
     </Group>
     <Group name="numerals" x="0" y="0" width="450" height="450">
       <Variant mode="AMBIENT" target="alpha" value="150"/>
-      <PartText name="numeral1" x="260" y="53" width="108" height="34" angle="30">
+      <PartText name="numeral1" x="273" y="31" width="108" height="34" angle="30">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">1</Font></Text>
       </PartText>
-      <PartText name="numeral2" x="326" y="119" width="108" height="34" angle="60">
+      <PartText name="numeral2" x="348" y="106" width="108" height="34" angle="60">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">2</Font></Text>
       </PartText>
-      <PartText name="numeral3" x="350" y="208" width="108" height="34" angle="90">
+      <PartText name="numeral3" x="375" y="208" width="108" height="34" angle="90">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">3</Font></Text>
       </PartText>
-      <PartText name="numeral4" x="326" y="297" width="108" height="34" angle="120">
+      <PartText name="numeral4" x="348" y="310" width="108" height="34" angle="120">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">4</Font></Text>
       </PartText>
-      <PartText name="numeral5" x="260" y="363" width="108" height="34" angle="150">
+      <PartText name="numeral5" x="273" y="385" width="108" height="34" angle="150">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">5</Font></Text>
       </PartText>
-      <PartText name="numeral6" x="171" y="387" width="108" height="34" angle="180">
+      <PartText name="numeral6" x="171" y="412" width="108" height="34" angle="180">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">6</Font></Text>
       </PartText>
-      <PartText name="numeral7" x="82" y="363" width="108" height="34" angle="210">
+      <PartText name="numeral7" x="69" y="385" width="108" height="34" angle="210">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">7</Font></Text>
       </PartText>
-      <PartText name="numeral8" x="16" y="298" width="108" height="34" angle="240">
+      <PartText name="numeral8" x="-6" y="310" width="108" height="34" angle="240">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">8</Font></Text>
       </PartText>
-      <PartText name="numeral9" x="-8" y="208" width="108" height="34" angle="270">
+      <PartText name="numeral9" x="-33" y="208" width="108" height="34" angle="270">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">9</Font></Text>
       </PartText>
-      <PartText name="numeral10" x="16" y="119" width="108" height="34" angle="300">
+      <PartText name="numeral10" x="-6" y="106" width="108" height="34" angle="300">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">10</Font></Text>
       </PartText>
-      <PartText name="numeral11" x="81" y="53" width="108" height="34" angle="330">
+      <PartText name="numeral11" x="69" y="31" width="108" height="34" angle="330">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">11</Font></Text>
       </PartText>
-      <PartText name="numeral12" x="171" y="29" width="108" height="34" angle="360">
+      <PartText name="numeral12" x="171" y="4" width="108" height="34" angle="360">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#FFE4E6E8">12</Font></Text>
       </PartText>
     </Group>
     <Group name="dayDate" x="0" y="0" width="450" height="450">
       <Variant mode="AMBIENT" target="alpha" value="130"/>
       <PartDraw name="window" x="0" y="0" width="450" height="450">
-        <RoundRectangle x="253" y="208" width="90" height="34" cornerRadiusX="3" cornerRadiusY="3"><Fill color="#FFECEDED"/><Stroke color="#FF8E9399" thickness="2.2"/></RoundRectangle>
-        <Line startX="313" startY="211" endX="313" endY="239"><Stroke color="#FF8E9399" thickness="1.4" cap="ROUND"/></Line>
+        <RoundRectangle x="263" y="208" width="90" height="34" cornerRadiusX="3" cornerRadiusY="3"><Fill color="#FFECEDED"/><Stroke color="#FF8E9399" thickness="2.2"/></RoundRectangle>
+        <Line startX="323" startY="211" endX="323" endY="239"><Stroke color="#FF8E9399" thickness="1.4" cap="ROUND"/></Line>
       </PartDraw>
-      <PartText name="day" x="243" y="212" width="80" height="26">
+      <PartText name="day" x="253" y="212" width="80" height="26">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="18" weight="BOLD" color="#FF1B1C1D"><Upper><Template>%s<Parameter expression="[DAY_OF_WEEK_S]"/></Template></Upper></Font></Text>
       </PartText>
-      <PartText name="date" x="288" y="212" width="80" height="26">
+      <PartText name="date" x="298" y="212" width="80" height="26">
         <Text align="CENTER"><Font family="SYNC_TO_DEVICE" size="18" weight="BOLD" color="#FF1B1C1D"><Template>%d<Parameter expression="[DAY]"/></Template></Font></Text>
       </PartText>
     </Group>

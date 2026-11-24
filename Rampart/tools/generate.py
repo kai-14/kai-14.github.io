@@ -38,9 +38,9 @@ PRINT = "#FFB4B8BC"
 DIAL_GLOW = (["#38FFFFFF", "#0DFFFFFF", "#00000000", "#80000000"], [0, 0.4, 0.7, 1])
 
 R_DIAL = 192                 # visible dial radius between the teeth
-TOOTH = (132, 204, 50)       # inner radius, outer radius, width
-R_NUM = 179                  # numerals sit on the outer part of each tooth
-R_LUME = 149                 # lume bar on the inner part
+TOOTH = (150, 222, 50)       # inner radius, outer radius, width
+R_NUM = 204                  # numerals in line with the minute ticks
+R_LUME = 166                 # lume bar on the inner part
 TICKS = (197, 212)
 HOUR_HAND = (112, 14)        # length, max width
 MIN_HAND = (166, 13)
@@ -149,7 +149,7 @@ def logo_mark(logo, cx, cy, color, h=20):
 
 
 # Day-date window at 3
-WIN = dict(x=C + 28, y=C - 17, w=90, h=34, split=C + 88)
+WIN = dict(x=C + 38, y=C - 17, w=90, h=34, split=C + 98)
 
 
 def dial_print():
