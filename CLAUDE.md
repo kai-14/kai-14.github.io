@@ -5,7 +5,7 @@
 The owner makes custom watch faces here and installs them on their watch from a Windows PC.
 
 - Faces use Google's **Watch Face Format v2**. They are resource-only Android apps with no code.
-  Each face is a self-contained Gradle project. The first one is `WatchFace/` ("Tidal").
+  Each face is a self-contained Gradle project: `WatchFace/` ("Tidal") and `Rampart/`.
 - **Never hand-edit `app/src/main/res/raw/watchface.xml`.** It is generated.
   Edit `tools/generate.py`, then run `python tools/generate.py`, which also rewrites
   `strings.xml` and `preview/*.svg`.
@@ -22,9 +22,12 @@ The owner makes custom watch faces here and installs them on their watch from a 
 
 ## Building
 
-- **CI**: pushing changes under `WatchFace/` runs `.github/workflows/watchface.yml`. It checks the XML
-  is up to date, validates it and uploads the `tidal-watch-face` artifact containing `app-release.apk`.
-  Download it with `gh run download <run-id> -n tidal-watch-face`.
+- **CI**: pushing changes under a face folder runs `.github/workflows/watchface.yml` (one matrix entry per face).
+  It checks the XML is up to date, validates it and uploads one artifact per face (`tidal-watch-face`,
+  `rampart-watch-face`) containing `app-release.apk`. Download with `gh run download <run-id> -n <artifact>`.
+- CI signs with a throwaway debug key that changes every run, so updating an installed face fails with
+  `INSTALL_FAILED_UPDATE_INCOMPATIBLE`. Uninstall the old package first (the owner then re-picks the face).
+- Windows PowerShell variable names are case-insensitive: `$s` and `$S` are the same variable.
 - **Locally** (faster for quick changes): needs JDK 17 and the Android SDK
   (`ANDROID_HOME` set; platform 35 and build-tools installed), then `gradle assembleRelease` inside the
   face folder. The APK lands in `app/build/outputs/apk/release/`.

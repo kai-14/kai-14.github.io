@@ -2,9 +2,22 @@
 <resources>
     <string name="app_name">Tidal</string>
     <string name="dial_color">Dial colour</string>
+    <string name="style">Style</string>
+    <string name="logo">Logo</string>
     <string name="theme_lagoon">Lagoon</string>
     <string name="theme_glacier">Glacier</string>
     <string name="theme_sand">Sand</string>
     <string name="theme_dusk">Dusk</string>
     <string name="theme_graphite">Graphite</string>
+    <string name="theme_ocean">Ocean</string>
+    <string name="theme_rose">Rose</string>
+    <string name="theme_sage">Sage</string>
+    <string name="theme_ember">Ember</string>
+    <string name="theme_midnight">Midnight</string>
+    <string name="style_classic">Classic</string>
+    <string name="style_dark">Dark</string>
+    <string name="style_noir">Noir</string>
+    <string name="logo_anthropic">Anthropic</string>
+    <string name="logo_claude">Claude</string>
+    <string name="logo_dot">Dot</string>
 </resources>

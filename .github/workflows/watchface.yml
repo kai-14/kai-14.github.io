@@ -4,15 +4,24 @@ on:
   push:
     paths:
       - "WatchFace/**"
+      - "Rampart/**"
       - ".github/workflows/watchface.yml"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dir: WatchFace
+            artifact: tidal-watch-face
+          - dir: Rampart
+            artifact: rampart-watch-face
     defaults:
       run:
-        working-directory: WatchFace
+        working-directory: ${{ matrix.dir }}
     steps:
       - uses: actions/checkout@v4
 
@@ -41,5 +50,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: tidal-watch-face
-          path: WatchFace/app/build/outputs/apk/release/*.apk
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.dir }}/app/build/outputs/apk/release/*.apk

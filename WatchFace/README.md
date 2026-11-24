@@ -6,7 +6,11 @@ An analog face built in Google's **Watch Face Format** (v2), the format Samsung 
 
 - The centre disc turns once an hour and carries the minute hand.
 - The hour sub-dial sits opposite the minute hand and orbits with it. It counter-rotates so its markers stay upright, and its own hand shows the hour.
-- There are five dial colours to choose from in the watch's customise screen: Lagoon, Glacier, Sand, Dusk and Graphite.
+- Settings in the watch's customise screen:
+  - **Dial colour**: Lagoon, Glacier, Sand, Dusk, Graphite, Ocean, Rose, Sage, Ember, Midnight.
+  - **Style**: *Classic* (tinted, softly lit dial), *Dark* (near-black dial with a hint of the colour and coloured hands),
+    *Noir* (pure black for OLED, with the markings and hands in the chosen colour).
+  - **Logo** at 12 on the hour dial: Anthropic, Claude or a plain dot.
 - Always-on display mode drops the dial colour to black and dims the markers to save battery.
 
 ## Get the APK
