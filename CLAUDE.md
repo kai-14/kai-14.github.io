@@ -25,8 +25,10 @@ The owner makes custom watch faces here and installs them on their watch from a 
 - **CI**: pushing changes under a face folder runs `.github/workflows/watchface.yml` (one matrix entry per face).
   It checks the XML is up to date, validates it and uploads one artifact per face (`tidal-watch-face`,
   `rampart-watch-face`) containing `app-release.apk`. Download with `gh run download <run-id> -n <artifact>`.
-- CI signs with a throwaway debug key that changes every run, so updating an installed face fails with
-  `INSTALL_FAILED_UPDATE_INCOMPATIBLE`. Uninstall the old package first (the owner then re-picks the face).
+- CI signs with the permanent key (repo secrets `WATCHFACE_KEYSTORE_B64` / `WATCHFACE_KEYSTORE_PASSWORD`;
+  cert SHA-256 `9f52241750b83dcd...`, printed in the "Show signing certificate" step), so `install -r` updates
+  in place. The keystore and its password live in `%USERPROFILE%\.android-keys\` on the owner's PC; never commit them.
+  Local builds without `WATCHFACE_KEYSTORE` use the debug key and won't install over a CI build.
 - Windows PowerShell variable names are case-insensitive: `$s` and `$S` are the same variable.
 - **Locally** (faster for quick changes): needs JDK 17 and the Android SDK
   (`ANDROID_HOME` set; platform 35 and build-tools installed), then `gradle assembleRelease` inside the
