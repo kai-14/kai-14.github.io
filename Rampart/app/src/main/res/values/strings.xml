@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rampart</string>
+    <string name="dial_color">Dial</string>
+    <string name="accent_color">Seconds</string>
+    <string name="logo">Logo</string>
+    <string name="tilt">Tilt shine</string>
+    <string name="dial_slate">Slate</string>
+    <string name="dial_carbon">Carbon</string>
+    <string name="dial_olive">Olive</string>
+    <string name="dial_navy">Navy</string>
+    <string name="dial_ash">Ash</string>
+    <string name="accent_yellow">Yellow</string>
+    <string name="accent_orange">Orange</string>
+    <string name="accent_red">Red</string>
+    <string name="accent_lime">Lime</string>
+    <string name="accent_ice">Ice</string>
+    <string name="accent_white">White</string>
+    <string name="logo_none">None</string>
+    <string name="logo_anthropic">Anthropic</string>
+    <string name="logo_claude">Claude</string>
+</resources>
