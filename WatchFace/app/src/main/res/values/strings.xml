@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tidal</string>
+    <string name="dial_color">Dial colour</string>
+    <string name="theme_lagoon">Lagoon</string>
+    <string name="theme_glacier">Glacier</string>
+    <string name="theme_sand">Sand</string>
+    <string name="theme_dusk">Dusk</string>
+    <string name="theme_graphite">Graphite</string>
+</resources>
